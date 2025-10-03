@@ -1,11 +1,11 @@
 import { Provider } from "react-redux";
-import Counter from "@/components/Counter";
 import store from "@/redux/store";
+import HooksCounter from "@/components/HooksCounter";
 
 function App() {
   return (
     <Provider store={store}>
-      <Counter />
+      <HooksCounter id={1} />
     </Provider>
   );
 }
