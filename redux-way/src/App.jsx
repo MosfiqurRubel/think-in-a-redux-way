@@ -5,7 +5,7 @@ import HooksCounter from "@/components/HooksCounter";
 function App() {
   return (
     <Provider store={store}>
-      <HooksCounter id={1} />
+      <HooksCounter />
     </Provider>
   );
 }
