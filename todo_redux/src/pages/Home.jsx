@@ -1,7 +1,7 @@
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "@/components/Navbar";
-import BookingForm from "@/components/BookingForm";
-import BookingList from "@/components/BookingList";
+// import BookingForm from "@/components/BookingForm";
+// import BookingList from "@/components/BookingList";
 import Header from "@/components/Header";
 import TodoList from "@/components/TodoList";
 import Footer from "@/components/Footer";

@@ -1,8 +1,7 @@
-import { combineReducers, createStore } from "redux";
-import bookingReducer from "./booking/bookingReducer";
+import { createStore } from "redux";
+import { composeWithDevTools } from "@redux-devtools/extension";
+import rootReducer from "./rootReducer";
 
-const rootReducer = combineReducers({
-  booking: bookingReducer,
-});
+const store = createStore(rootReducer, composeWithDevTools());
 
-export const store = createStore(rootReducer);
+export default store;

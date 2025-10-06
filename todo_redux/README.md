@@ -11,6 +11,10 @@ It has:
 - Redux React-Redux
 - Lucide React
 
+## Redux devtools
+
+- `npm install --save-dev @redux-devtools/extension`
+
 ## Run it Locally
 
 - Clone or fork the repo
