@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Noto Sans", sans-serif;
+  --font-sans: "Noto Sans", sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #dbeafe;
+    --foreground: #0f1729;
+    --card: #ffffff;
+
+    --primary: #7969c9;
+    --primary-foreground: #dbeafe;
+    --border: #e1e7ef;
+  }
+
+  .dark {
+    --background: #05080f;
+    --foreground: #e1e7ef;
+    --card: #0b111e;
+
+    --primary: #7f6ce0;
+    --primary-foreground: #e1e7ef;
+    --border: #222f44;
+  }
+
+  * {
+    /* @apply border-border; */
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @midia (width >= 640px) {
+    max-width: 640px;
+  }
+  @midia (width >= 768px) {
+    max-width: 768px;
+  }
+  @midia (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @midia (width >= 1280px) {
+    max-width: 1280px;
+  }
+  @midia (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility form-label {
+  @apply block text-sm font-medium text-gray-600 capitalize mb-1;
+}
+@utility input-field {
+  @apply rounded-lg px-4 py-1 w-full focus:outline-hidden;
+}
+@utility select-box {
+  @apply rounded-lg p-2 w-full bg-white focus:outline-hidden focus:ring-1 focus:ring-blue-500;
+}
+
+#root {
+  @apply max-w-full my-0 mx-auto p-0;
+}
