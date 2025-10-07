@@ -1,4 +1,4 @@
-# Flight Booking App
+# Simple Todo Appllication with Redux
 
 It has:
 
