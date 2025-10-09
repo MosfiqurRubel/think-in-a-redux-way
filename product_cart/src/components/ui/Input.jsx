@@ -1,4 +1,5 @@
 const Input = ({
+  id,
   name,
   type = "text",
   placeholder = "",
@@ -9,6 +10,7 @@ const Input = ({
 }) => {
   return (
     <input
+      id={id}
       name={name}
       type={type}
       placeholder={placeholder}

@@ -12,7 +12,8 @@ const Button = ({
 }) => {
   // Tailwind classes for variants
   const variantClasses = {
-    primary: "bg-blue-500 text-white hover:bg-blue-600",
+    primary:
+      "border !border-transparent bg-primary text-white hover:bg-primary/80",
     secondary: "bg-gray-500 text-white hover:bg-gray-600",
     danger: "bg-red-500 text-white hover:bg-red-600",
     outline:
@@ -28,7 +29,8 @@ const Button = ({
   };
 
   // Combine classes
-  const baseClasses = "rounded-lg focus:outline-hidden";
+  const baseClasses =
+    "inline-flex items-center gap-x-2 rounded-md focus:outline-hidden";
   const disabledClasses = "opacity-50 cursor-not-allowed";
   const finalClasses = `${baseClasses} ${variantClasses[variant]} ${
     sizeClasses[size]

@@ -19,7 +19,7 @@
   --foreground: 222 47% 11%;
   --card: 210 17% 98%;
 
-  --primary: 250 47% 60%;
+  --primary: 224 29% 13%;
   --primary-foreground: 0 0% 100%;
   --border: 214 32% 91%;
 }
@@ -30,7 +30,7 @@
   --foreground: 210 17% 98%;
   --card: 222 47% 8%;
 
-  --primary: 250 65% 65%;
+  --primary: 224 50% 50%;
   --primary-foreground: 213 31% 91%;
   --border: 217 33% 20%;
 }
@@ -62,7 +62,18 @@ body {
 }
 
 * {
-  @apply border-border;
+  /* @apply border-border; */
+}
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    @apply appearance-none m-0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 
 @utility container {
@@ -91,10 +102,10 @@ body {
 }
 
 @utility form-label {
-  @apply block text-sm font-medium text-gray-600 capitalize mb-1;
+  @apply block text-base font-medium text-gray-600 capitalize;
 }
 @utility input-field {
-  @apply rounded-lg px-4 py-1 w-full focus:outline-hidden;
+  @apply rounded-md px-2 py-1 text-base w-full border border-border focus:border-primary;
 }
 @utility select-box {
   @apply rounded-lg p-2 w-full bg-white focus:outline-hidden focus:ring-1 focus:ring-blue-500;
