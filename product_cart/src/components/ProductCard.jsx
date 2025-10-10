@@ -1,28 +1,43 @@
-import applePhoto from "@/assets/images/apple_1.avif";
+import { useDispatch } from "react-redux";
+import { addToCart, calculateTotal } from "@/redux/cart/actions";
+import { decreaseProductQty } from "@/redux/products/actions";
 import Button from "@/components/ui/Button";
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const { title, category, image, price, quantity } = product;
+
+  const handleClick = (product) => {
+    console.log("show product--- ", product);
+    if (product.quantity > 0) {
+      dispatch(addToCart(product));
+      dispatch(decreaseProductQty(product.id));
+      dispatch(calculateTotal());
+    }
+  };
+
   return (
     <div className="lws-productCard border-border">
-      <img className="lws-productImage" src={applePhoto} alt="product" />
+      <img className="lws-productImage" src={image} alt={title} />
       <div className="p-4 space-y-2">
-        <h4 className="lws-productName">Spring and summershoes</h4>
-        <p className="lws-productCategory">Mens shoes</p>
+        <h4 className="lws-productName">{title}</h4>
+        <p className="lws-productCategory">{category}</p>
         <div className="flex items-center justify-between pb-2">
           <p className="productPrice">
-            BDT <span className="lws-price">400</span>
+            BDT <span className="lws-price">{price}</span>
           </p>
           <p className="productQuantity">
-            QTY <span className="lws-quantity">10</span>
+            QTY <span className="lws-quantity">{quantity}</span>
           </p>
         </div>
         <Button
-          type="submit"
+          onClick={() => handleClick(product)}
+          disabled={quantity <= 0}
           size="md"
           variant="primary"
           buttonClass="w-full justify-center"
         >
-          Add To Cart
+          {quantity <= 0 ? "Out of Stock" : "Add To Cart"}
         </Button>
       </div>
     </div>

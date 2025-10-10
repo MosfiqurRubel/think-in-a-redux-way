@@ -1,3 +1,4 @@
+import initialState from "./initialState";
 import {
   ADD_TO_CART,
   CALCULATE_TOTAL,
@@ -5,7 +6,6 @@ import {
   INCREMENT_QTY,
   REMOVE_FROM_CART,
 } from "./actionTypes";
-import initialState from "./initialState";
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
 
       if (existing) {
         updatedCart = state.cartItems.map((item) =>
-          item.id
+          item.id === product.id
             ? {
                 ...item,
                 quantity: item.quantity + 1,
@@ -28,13 +28,20 @@ const reducer = (state = initialState, action) => {
         updatedCart = [...state.cartItems, { ...product, quantity: 1 }];
       }
 
-      return { ...state, cartItems: updatedCart };
+      return {
+        ...state,
+        cartItems: updatedCart,
+        totalItems: state.totalItems + 1,
+      };
     }
 
     case REMOVE_FROM_CART:
+      const removeItem = state.cartItems.find((r) => r.id === action.payload);
+
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
+        totalItems: state.totalItems - (removeItem?.quantity || 0),
       };
 
     case INCREMENT_QTY:
@@ -45,6 +52,7 @@ const reducer = (state = initialState, action) => {
             ? { ...item, quantity: item.quantity + 1 }
             : item
         ),
+        totalItems: Math.max(state.totalItems + 1, 0),
       };
 
     case DECREMENT_QTY:
@@ -53,10 +61,11 @@ const reducer = (state = initialState, action) => {
         cartItems: state.cartItems
           .map((item) =>
             item.id === action.payload
-              ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
+              ? { ...item, quantity: item.quantity - 1 }
               : item
           )
           .filter((item) => item.quantity > 0),
+        totalItems: Math.max(state.totalItems - 1, 0),
       };
 
     case CALCULATE_TOTAL:

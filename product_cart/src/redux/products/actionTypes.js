@@ -1,1 +1,4 @@
 export const ADD_PRODUCT = "products/ADD_PRODUCT";
+export const DECREASE_PRODUCT_QTY = "products/DECREASE_PRODUCT_QTY";
+export const INCREASE_PRODUCT_QTY = "products/INCREASE_PRODUCT_QTY";
+export const INCREASE_PRODUCT_QTY_BULK = "products/INCREASE_PRODUCT_QTY_BULK";
