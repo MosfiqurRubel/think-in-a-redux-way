@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Todo from "@/components/Todo";
-import fetchTodos from "@/redux/thunk/fetchTodos";
+import fetchTodos from "@/redux/todos/thunk/fetchTodos";
 
 const TodoList = () => {
   const todos = useSelector((state) => state.todos);

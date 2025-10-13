@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
-import { toggled, colorSelected, deleted } from "@/redux/todos/actions";
+import { deleted } from "@/redux/todos/actions";
+import updateStatus from "@/redux/todos/thunk/updateStatus";
+import updateColor from "@/redux/todos/thunk/updateColor";
 import cancleImage from "@/assets/images/icons/cancel.png";
 import SvgIcon from "@/components/ui/SvgIcon";
 import Checkbox from "@/components/ui/Checkbox";
@@ -9,11 +11,11 @@ const Todo = ({ todo }) => {
   const { id, text, completed, color } = todo;
 
   const handleStatusChange = (todoId) => {
-    dispatch(toggled(todoId));
+    dispatch(updateStatus(todoId, completed));
   };
 
   const handleColorChange = (todoId, color) => {
-    dispatch(colorSelected(todoId, color));
+    dispatch(updateColor(todoId, color));
   };
 
   const handleDelete = (todoId) => {

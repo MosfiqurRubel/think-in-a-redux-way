@@ -1,4 +1,4 @@
-import { loaded } from "../todos/actions";
+import { loaded } from "../actions";
 
 const fetchTodos = async (dispatch) => {
   const response = await fetch("http://localhost:3001/todos");
