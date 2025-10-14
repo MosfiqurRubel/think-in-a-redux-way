@@ -11,6 +11,7 @@
   --color-primary-foreground: hsl(var(--primary-foreground));
 
   --color-card: hsl(var(--card));
+  --color-label: hsl(var(--label));
 }
 
 /* Light Theme (default) */
@@ -22,6 +23,8 @@
   --primary: 243 80% 62%; /* #5850ec */
   --primary-foreground: 0 0% 100%;
   --border: 220 13% 91%; /* #e5e7eb */
+
+  --label: 0, 2%, 32%; /* #534f4f */
 }
 
 /* Dark Theme */
@@ -32,7 +35,9 @@
 
   --primary: 243 90% 82%;
   --primary-foreground: 213 31% 91%;
-  --border: 223 14% 20%;
+  --border: 220 14% 80%;
+
+  --label: 0, 1%, 32%;
 }
 
 /* 
@@ -86,7 +91,7 @@ body {
 }
 
 @utility form-label {
-  @apply block text-base font-medium text-gray-600 capitalize;
+  @apply block text-base font-normal text-label capitalize;
 }
 
 @utility input-field {

@@ -3,6 +3,8 @@ const Input = ({
   name,
   type = "text",
   placeholder = "",
+  min,
+  max,
   required = false,
   value,
   className,
@@ -13,6 +15,8 @@ const Input = ({
       id={id}
       name={name}
       type={type}
+      min={min}
+      max={max}
       placeholder={placeholder}
       required={required}
       value={value}

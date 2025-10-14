@@ -1,4 +1,8 @@
 import Heading from "@/components/ui/Heading";
+import Button from "@/components/ui/Button";
+import Label from "@/components/ui/Label";
+import Input from "@/components/ui/Input";
+import Checkbox from "@/components/ui/Checkbox";
 
 const AddBookForm = () => {
   return (
@@ -6,80 +10,62 @@ const AddBookForm = () => {
       <Heading text="Add New Book" className="mb-8 text-center" />
       <form className="book-form">
         <div className="space-y-2">
-          <label for="name">Book Name</label>
-          <input
-            required
-            className="text-input"
-            type="text"
-            id="input-Bookname"
-            name="name"
-          />
+          <Label htmlFor="name" text="Book Name" />
+          <Input name="name" id="input-Bookname" required={true} />
         </div>
 
         <div className="space-y-2">
-          <label for="category">Author</label>
-          <input
-            required
-            className="text-input"
-            type="text"
-            id="input-Bookauthor"
-            name="author"
-          />
+          <Label htmlFor="author" text="Author" />
+          <Input name="author" id="input-Bookauthor" required={true} />
         </div>
 
         <div className="space-y-2">
-          <label for="image">Image Url</label>
-          <input
-            required
-            className="text-input"
-            type="text"
-            id="input-Bookthumbnail"
-            name="thumbnail"
-          />
+          <Label htmlFor="image" text="Image Url" />
+          <Input name="author" id="input-Bookthumbnail" required={true} />
         </div>
 
         <div className="grid grid-cols-2 gap-8 pb-4">
           <div className="space-y-2">
-            <label for="price">Price</label>
-            <input
-              required
-              className="text-input"
-              type="number"
-              id="input-Bookprice"
+            <Label htmlFor="price" text="Price" />
+            <Input
               name="price"
+              id="input-Bookprice"
+              type="number"
+              required={true}
             />
           </div>
 
           <div className="space-y-2">
-            <label for="quantity">Rating</label>
-            <input
-              required
-              className="text-input"
-              type="number"
-              id="input-Bookrating"
+            <Label htmlFor="rating" text="Rating" />
+            <Input
               name="rating"
               min="1"
               max="5"
+              id="input-Bookrating"
+              type="number"
+              required={true}
             />
           </div>
         </div>
 
         <div className="flex items-center">
-          <input
-            id="input-Bookfeatured"
-            type="checkbox"
-            name="featured"
-            className="w-4 h-4"
+          <Checkbox name="featured" id="input-Bookfeatured" />
+          <Label
+            htmlFor="featured"
+            text="This is a featured book"
+            className="ml-2 text-sm normal-case"
           />
-          <label for="featured" className="ml-2 text-sm">
-            {" "}
-            This is a featured book{" "}
-          </label>
         </div>
 
-        <button type="submit" className="submit" id="submit">
+        <Button
+          type="submit"
+          size="md"
+          variant="primary"
+          id="submit"
+          buttonClass="w-full justify-center"
+        >
           Add Book
-        </button>
+        </Button>
       </form>
     </aside>
   );
