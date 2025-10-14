@@ -62,7 +62,7 @@ const AddBookForm = () => {
           size="md"
           variant="primary"
           id="submit"
-          buttonClass="w-full justify-center"
+          className="w-full justify-center"
         >
           Add Book
         </Button>

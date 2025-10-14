@@ -13,18 +13,19 @@ const BookList = () => {
           <Button
             size="sm"
             variant="primary"
-            pilled="primary"
+            rounded="full"
+            className="px-6 cursor-pointer"
             id="lws-filterAll"
-            buttonClass="py-1.5"
           >
             All
           </Button>
           <Button
             size="sm"
-            variant="outline"
-            pilled="outline"
+            variant="primary"
+            outline
+            rounded="full"
+            className="px-6 cursor-pointer"
             id="lws-filterFeatured"
-            buttonClass="py-1.5"
           >
             Featured
           </Button>
@@ -47,13 +48,13 @@ const BookList = () => {
                 outline
               />
               <div className="text-gray-500 space-x-3">
-                <Button variant="icon">
+                <Button size="icon" className="cursor-pointer">
                   <SvgIcon
                     name="edit"
                     className="fill-none hover:text-primary"
                   />
                 </Button>
-                <Button variant="icon">
+                <Button size="icon" className="cursor-pointer">
                   <SvgIcon
                     name="delete"
                     className="fill-none hover:text-red-500"
