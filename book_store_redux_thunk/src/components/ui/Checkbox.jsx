@@ -9,7 +9,13 @@ const Checkbox = ({
 }) => {
   const handleChange = (e) => {
     if (disabled) return;
-    onChange?.(e.target.checked);
+    onChange?.({
+      target: {
+        name: name,
+        value: e.target.checked,
+      },
+    });
+    console.log("checkbox", e.target.checked);
   };
 
   return (

@@ -1,11 +1,11 @@
-import AddBookForm from "@/components/AddBookForm";
+import BookForm from "@/components/BookForm";
 import BookList from "@/components/BookList";
 
 const Home = () => {
   return (
     <div className="container grid xl:grid-cols-[auto_350px] 2xl:grid-cols-[auto_400px] gap-4 2xl:gap-8">
       <BookList />
-      <AddBookForm />
+      <BookForm />
     </div>
   );
 };
