@@ -4,7 +4,7 @@ import BookCard from "@/components/BookCard";
 import FilterButtons from "@/components/FilterButtons";
 
 const BookList = () => {
-  const books = useSelector((state) => state.books);
+  const books = useSelector((state) => state.books.books);
   const { search, status } = useSelector((state) => state.filter);
 
   const filteredBooks = books.filter((book) => {

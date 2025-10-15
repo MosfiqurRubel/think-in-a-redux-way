@@ -10,10 +10,12 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     dispatch(searchBook(e.target.value));
   };
+
+  const handleSubmit = (e) => [e.preventDefault()];
   console.log(search);
 
   return (
-    <form className="flex items-center">
+    <form onSubmit={handleSubmit} className="flex items-center">
       <div className="group relative rounded-md bg-white">
         <SvgIcon
           name="search"

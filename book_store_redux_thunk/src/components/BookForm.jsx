@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { added } from "@/redux/books/actions";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
@@ -6,38 +8,51 @@ import Input from "@/components/ui/Input";
 import Checkbox from "@/components/ui/Checkbox";
 
 const BookForm = () => {
-  const [bookData, setBookData] = useState({
+  const dispatch = useDispatch();
+  const empty = {
     name: "",
     author: "",
     thumbnail: "",
     price: "",
     rating: "",
     featured: false,
-  });
+  };
+  const [bookData, setBookData] = useState(empty);
 
+  // form input গুলোর checkbox handler আলাদা ভাবে কাজ করে — checkbox এর জন্য e.target.checked নিতে হয়, e.target.value না।
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
     setBookData({
       ...bookData,
-      [e.target.name]: e.target.value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("e---", bookData);
-    setBookData({
-      name: "",
-      author: "",
-      thumbnail: "",
-      price: "",
-      rating: "",
-      featured: false,
-    });
+    const payload = {
+      ...bookData,
+      price: Number(bookData.price),
+      rating: Number(bookData.rating || 0),
+    };
+
+    // dispatch action
+    dispatch(added(payload));
+
+    console.log("e---", bookData);
+    // reset form
+    setBookData(empty);
   };
 
   return (
     <aside className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
-      <Heading text="Add New Book" className="mb-8 text-center" />
+      <Heading
+        text={empty ? "Add New Book" : "Update Book"}
+        className="mb-8 text-center"
+      />
+
       <form className="book-form" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <Label htmlFor="name" text="Book Name" />
@@ -121,7 +136,7 @@ const BookForm = () => {
           id="submit"
           className="w-full justify-center"
         >
-          Add Book
+          {empty ? "Add Book" : "Update Book"}
         </Button>
       </form>
     </aside>

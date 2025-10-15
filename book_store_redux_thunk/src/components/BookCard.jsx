@@ -14,7 +14,7 @@ const BookCard = ({ book }) => {
         alt={author}
       />
       <div className="flex-1 h-full pr-2 pt-2 flex flex-col">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center">
           {featured && (
             <Badge
               text="featured"
@@ -24,6 +24,7 @@ const BookCard = ({ book }) => {
               outline
             />
           )}
+          <div className="grow"></div>
           <div className="text-gray-500 space-x-3">
             <Button size="icon" className="cursor-pointer">
               <SvgIcon name="edit" className="fill-none hover:text-primary" />
