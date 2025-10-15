@@ -12,6 +12,7 @@
 
   --color-card: hsl(var(--card));
   --color-label: hsl(var(--label));
+  --color-heading: hsl(var(--heading));
 }
 
 /* Light Theme (default) */
@@ -25,12 +26,13 @@
   --border: 220 13% 91%; /* #e5e7eb */
 
   --label: 0, 2%, 32%; /* #534f4f */
+  --heading: 224 29% 13%; /* #171c2a */
 }
 
 /* Dark Theme */
 .dark {
   --background: 222 47% 11%;
-  --foreground: 224 33% 30%;
+  --foreground: 224 32% 20%;
   --card: 222 47% 8%;
 
   --primary: 243 90% 82%;
@@ -38,6 +40,7 @@
   --border: 220 14% 80%;
 
   --label: 0, 1%, 32%;
+  --heading: 210 17% 98%;
 }
 
 /* 

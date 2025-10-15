@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import SvgIcon from "@/components/ui/SvgIcon";
 import Badge from "@/components/ui/Badge";
+import Rating from "@/components/ui/Rating";
 
 const BookCard = ({ book }) => {
   const { name, author, thumbnail, price, rating, featured } = book;
@@ -36,13 +37,7 @@ const BookCard = ({ book }) => {
         <div className="space-y-2 mt-4 h-full">
           <h4 className="lws-bookName">{name}</h4>
           <p className="lws-author">{author}</p>
-          <div className="lws-stars">
-            {rating}
-            <SvgIcon
-              name="star"
-              className="w-4 h-4 text-yellow-400 hover:text-yellow-500"
-            />
-          </div>
+          <Rating rating={rating} />
           <p className="lws-price">BDT {price}</p>
         </div>
       </div>

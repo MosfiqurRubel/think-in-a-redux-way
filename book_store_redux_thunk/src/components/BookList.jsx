@@ -27,7 +27,7 @@ const BookList = () => {
   return (
     <section className="order-2 xl:-order-1">
       <div className="flex items-center justify-between mb-12">
-        <Heading text="Book List" className="mt-2" />
+        <Heading text="Book List" className="text-heading mt-2" />
         <FilterButtons />
       </div>
 
