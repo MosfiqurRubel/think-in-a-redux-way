@@ -5,8 +5,6 @@ import logo from "@/assets/images/logo.svg";
 import SearchBar from "@/components/SearchBar";
 
 const Navbar = ({ isScrolled }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
   return (
     <nav
       className={cn(
@@ -52,7 +50,7 @@ const Navbar = ({ isScrolled }) => {
           </li>
         </ul>
 
-        <SearchBar searchTerm={searchTerm} handleSearch={setSearchTerm} />
+        <SearchBar />
       </div>
     </nav>
   );
