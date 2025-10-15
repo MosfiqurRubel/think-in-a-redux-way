@@ -3,8 +3,8 @@ import SvgIcon from "@/components/ui/SvgIcon";
 import Badge from "@/components/ui/Badge";
 import Rating from "@/components/ui/Rating";
 
-const BookCard = ({ book }) => {
-  const { name, author, thumbnail, price, rating, featured } = book;
+const BookCard = ({ book, onEdit, onDelete }) => {
+  const { id, name, author, thumbnail, price, rating, featured } = book;
 
   return (
     <div className="book-card">
@@ -26,10 +26,18 @@ const BookCard = ({ book }) => {
           )}
           <div className="grow"></div>
           <div className="text-gray-500 space-x-3">
-            <Button size="icon" className="cursor-pointer">
+            <Button
+              onClick={() => onEdit(book)}
+              size="icon"
+              className="cursor-pointer"
+            >
               <SvgIcon name="edit" className="fill-none hover:text-primary" />
             </Button>
-            <Button size="icon" className="cursor-pointer">
+            <Button
+              onClick={() => onDelete(id)}
+              size="icon"
+              className="cursor-pointer"
+            >
               <SvgIcon name="delete" className="fill-none hover:text-red-500" />
             </Button>
           </div>

@@ -1,14 +1,15 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { added } from "@/redux/books/actions";
+import { useEffect, useState } from "react";
+import { added, updateBook } from "@/redux/books/actions";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import Checkbox from "@/components/ui/Checkbox";
 
-const BookForm = () => {
+const BookForm = ({ editBook, setEditBook }) => {
   const dispatch = useDispatch();
+
   const empty = {
     name: "",
     author: "",
@@ -17,7 +18,13 @@ const BookForm = () => {
     rating: "",
     featured: false,
   };
+
   const [bookData, setBookData] = useState(empty);
+
+  // ✅ যদি editBook আসে, তাহলে form-এ auto fill হবে
+  useEffect(() => {
+    setBookData(editBook || empty);
+  }, [editBook]);
 
   // form input গুলোর checkbox handler আলাদা ভাবে কাজ করে — checkbox এর জন্য e.target.checked নিতে হয়, e.target.value না।
   const handleChange = (e) => {
@@ -31,17 +38,25 @@ const BookForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log("e---", bookData);
     const payload = {
       ...bookData,
       price: Number(bookData.price),
       rating: Number(bookData.rating || 0),
+      featured: Boolean(bookData.featured),
     };
 
-    // dispatch action
-    dispatch(added(payload));
+    if (editBook) {
+      dispatch(updateBook(payload));
+      setEditBook(null); // Reset edit mode
+    } else {
+      // dispatch action
+      dispatch(added(payload));
+    }
 
     console.log("e---", bookData);
+
     // reset form
     setBookData(empty);
   };
@@ -49,7 +64,7 @@ const BookForm = () => {
   return (
     <aside className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
       <Heading
-        text={empty ? "Add New Book" : "Update Book"}
+        text={editBook ? "Update Book" : "Add New Book"}
         className="mb-8 text-center"
       />
 
@@ -136,7 +151,7 @@ const BookForm = () => {
           id="submit"
           className="w-full justify-center"
         >
-          {empty ? "Add Book" : "Update Book"}
+          {editBook ? "Update Book" : "Add New Book"}
         </Button>
       </form>
     </aside>

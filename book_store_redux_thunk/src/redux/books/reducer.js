@@ -2,8 +2,7 @@ import initialState from "./initialState";
 import { ADD_BOOK, DELETE_BOOK, UPDATE_BOOK } from "./actionTypes";
 
 const nextBookId = (books) => {
-  const maxId = books.reduce((maxId, book) => Math.max(book.id, maxId), -1);
-  // const maxId = books.reduce((maxId, book) => Math.max(book.id, maxId), 0);
+  const maxId = books.reduce((maxId, book) => Math.max(book.id, maxId), 0);
   return maxId + 1;
 };
 
@@ -22,13 +21,16 @@ const reducer = (state = initialState, action) => {
     case UPDATE_BOOK:
       return {
         ...state,
-        books: state.books.map((book) =>
-          book.id === action.payload.id ? action.payload : book
+        books: state.books.map((b) =>
+          b.id === action.payload.id ? action.payload : b
         ),
       };
 
     case DELETE_BOOK:
-      return state.books.filter((book) => book.id !== action.payload);
+      return {
+        ...state,
+        books: state.books.filter((b) => b.id !== action.payload),
+      };
 
     default:
       return state;

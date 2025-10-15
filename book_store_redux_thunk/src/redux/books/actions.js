@@ -14,9 +14,9 @@ export const updateBook = (book) => {
   };
 };
 
-export const deleteBook = (bookId) => {
+export const deleteBook = (id) => {
   return {
     type: DELETE_BOOK,
-    payload: bookId,
+    payload: id,
   };
 };
