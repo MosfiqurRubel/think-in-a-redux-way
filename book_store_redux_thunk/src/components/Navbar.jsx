@@ -27,7 +27,7 @@ const Navbar = ({ isScrolled }) => {
               Book Store
             </NavLink>
           </li>
-          <li className="cursor-pointer">
+          <li className="font-semibold cursor-pointer">
             <NavLink
               to="/wishlist"
               className={({ isActive }) =>
@@ -37,7 +37,7 @@ const Navbar = ({ isScrolled }) => {
               Wishlist
             </NavLink>
           </li>
-          <li className="cursor-pointer">
+          <li className="font-semibold cursor-pointer">
             <NavLink
               to="/mycollection"
               className={({ isActive }) =>

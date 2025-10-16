@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
+import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "@/components/Navbar";
-import { cn } from "@/lib/utils";
+import Footer from "@/components/Footer";
 
 const RootLayout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,6 +29,7 @@ const RootLayout = () => {
       >
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 };

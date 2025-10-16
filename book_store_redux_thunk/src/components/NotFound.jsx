@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 
 const NotFound = () => {
   const navigate = useNavigate();
+
   return (
     <section className="h-full flex-center">
       <div className="flex flex-col items-center">
