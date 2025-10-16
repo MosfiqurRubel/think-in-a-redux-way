@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deletedBook } from "@/redux/books/actions";
 import fetchBooks from "@/redux/books/thunk/fetchBooks";
+import deleteBook from "@/redux/books/thunk/deleteBook";
 import Heading from "@/components/ui/Heading";
 import BookCard from "@/components/BookCard";
 import FilterButtons from "@/components/FilterButtons";
@@ -28,7 +28,7 @@ const BookList = ({ setEditBook }) => {
   });
 
   const handleEdit = (book) => setEditBook(book);
-  const handleDelete = (id) => dispatch(deletedBook(id));
+  const handleDelete = (id) => dispatch(deleteBook(id));
 
   return (
     <section className="order-2 xl:-order-1">
