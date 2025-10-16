@@ -1,5 +1,5 @@
 import initialState from "./initialState";
-import { ADD_BOOK, DELETE_BOOK, LOADED, UPDATE_BOOK } from "./actionTypes";
+import { ADDED_BOOK, DELETED_BOOK, LOADED, UPDATED_BOOK } from "./actionTypes";
 
 const nextBookId = (books) => {
   const maxId = books.reduce((maxId, book) => Math.max(book.id, maxId), 0);
@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
         books: action.payload,
       };
 
-    case ADD_BOOK:
+    case ADDED_BOOK:
       const newBook = {
         ...action.payload,
         id: nextBookId(state.books),
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
         books: [...state.books, newBook],
       };
 
-    case UPDATE_BOOK:
+    case UPDATED_BOOK:
       return {
         ...state,
         books: state.books.map((b) =>
@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
         ),
       };
 
-    case DELETE_BOOK:
+    case DELETED_BOOK:
       return {
         ...state,
         books: state.books.filter((b) => b.id !== action.payload),

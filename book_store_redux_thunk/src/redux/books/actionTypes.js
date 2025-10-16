@@ -1,4 +1,4 @@
 export const LOADED = "books/LOADED";
-export const ADD_BOOK = "books/ADD_BOOK";
-export const UPDATE_BOOK = "books/UPDATE_BOOK";
-export const DELETE_BOOK = "books/DELETE_BOOK";
+export const ADDED_BOOK = "books/ADDED_BOOK";
+export const UPDATED_BOOK = "books/UPDATED_BOOK";
+export const DELETED_BOOK = "books/DELETED_BOOK";

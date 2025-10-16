@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { updateBook } from "@/redux/books/actions";
 import addBook from "@/redux/books/thunk/addBook";
+import updateBook from "@/redux/books/thunk/updateBook";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
@@ -49,7 +49,7 @@ const BookForm = ({ editBook, setEditBook }) => {
     };
 
     if (editBook) {
-      dispatch(updateBook(payload));
+      dispatch(updateBook(editBook.id, payload));
       setEditBook(null); // Reset edit mode
     } else {
       // dispatch action

@@ -62,6 +62,15 @@
       "rating": 3,
       "featured": true,
       "id": 7
+    },
+    {
+      "name": "The golden necklace",
+      "author": "Maithili Joshi",
+      "thumbnail": "https://d1fd687oe6a92y.cloudfront.net/img/user-media/titles/title/cover/4561f763d7d6465188cd888ba3395a6f/61904ffd33684998a5563b230b38eb0d.jpg.200x0_q85_autocrop.webp",
+      "price": 16,
+      "rating": 5,
+      "featured": false,
+      "id": 8
     }
   ]
 }
