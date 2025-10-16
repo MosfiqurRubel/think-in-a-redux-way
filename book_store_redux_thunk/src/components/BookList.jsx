@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { deleteBook } from "@/redux/books/actions";
+import fetchBooks from "@/redux/books/thunk/fetchBooks";
 import Heading from "@/components/ui/Heading";
 import BookCard from "@/components/BookCard";
 import FilterButtons from "@/components/FilterButtons";
@@ -9,6 +11,10 @@ const BookList = ({ setEditBook }) => {
 
   const books = useSelector((state) => state.books.books);
   const { search, status } = useSelector((state) => state.filter);
+
+  useEffect(() => {
+    dispatch(fetchBooks);
+  }, [dispatch]);
 
   const filteredBooks = books.filter((book) => {
     const matchesSearch =

@@ -1,5 +1,5 @@
 import initialState from "./initialState";
-import { ADD_BOOK, DELETE_BOOK, UPDATE_BOOK } from "./actionTypes";
+import { ADD_BOOK, DELETE_BOOK, LOADED, UPDATE_BOOK } from "./actionTypes";
 
 const nextBookId = (books) => {
   const maxId = books.reduce((maxId, book) => Math.max(book.id, maxId), 0);
@@ -8,6 +8,12 @@ const nextBookId = (books) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOADED:
+      return {
+        ...state,
+        books: action.payload,
+      };
+
     case ADD_BOOK:
       const newBook = {
         ...action.payload,
