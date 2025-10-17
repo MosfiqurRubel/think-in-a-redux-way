@@ -1,13 +1,13 @@
-const createSlice = require("@reduxjs/toolkit");
+const { createSlice } = require("@reduxjs/toolkit");
 
 // initial state
-const inititalState = {
+const initialState = {
   count: 0,
 };
 
 const counterSlice = createSlice({
   name: "counter",
-  inititalState,
+  initialState,
   reducers: {
     increment: (state, action) => {
       state.count++;
@@ -18,5 +18,5 @@ const counterSlice = createSlice({
   },
 });
 
-modules.exports = counterSlice.reducer;
-modules.exports.counterActions = counterSlice.actions;
+module.exports = counterSlice.reducer;
+module.exports.counterActions = counterSlice.actions;
