@@ -15,3 +15,9 @@
 - ✓ Console এ লগ করার জন্যে অবশ্যই redux-logger এই middleware টি ব্যবহার করতে হবে।
 
 - ✓ মনে রাখবেন, একবার node application run করে দিলেই দুটি API request sequentially পর পর রান করতে হবে অর্থাৎ প্রথম রিকুয়েস্টে যেই ট্যাগ গুলো পাবো সেই ট্যাগ দিয়ে ‘tags_like’ সার্চ দিয়ে বাকি রিলেটেড ভিডিও গুলো নিয়ে আসতে হবে।
+
+## Install
+
+- `npm install @reduxjs/toolkit`
+- `npm install node-fetch@2`
+- `npm install redux-logger`
