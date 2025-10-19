@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import usersReducer from "@/features/users/usersSlice";
+import videosReducer from "@/features/videos/videosSlice";
 
 export const store = configureStore({
   reducer: {
-    users: usersReducer,
+    videos: videosReducer,
   },
   devTools: true, // ✅ Enables Redux DevTools
 });
