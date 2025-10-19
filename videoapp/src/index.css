@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", system-ui, sans-serif;
+
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-label: hsl(var(--label));
+  --color-heading: hsl(var(--heading));
+}
+
+/* Light Theme (default) */
+:root {
+  --background: 210 40% 98%; /* #f8fafc */
+  --foreground: 224 29% 13%; /* #171c2a */
+  --card: 210 17% 98%;
+
+  --primary: 243 80% 62%; /* #5850ec */
+  --primary-foreground: 0 0% 100%;
+  --border: 220 13% 91%; /* #e5e7eb */
+
+  --label: 0, 2%, 32%; /* #534f4f */
+  --heading: 224 29% 13%; /* #171c2a */
+}
+
+/* Dark Theme */
+.dark {
+  --background: 222 47% 11%;
+  --foreground: 224 32% 20%;
+  --card: 222 47% 8%;
+
+  --primary: 243 90% 82%;
+  --primary-foreground: 213 31% 91%;
+  --border: 220 14% 80%;
+
+  --label: 0, 1%, 32%;
+  --heading: 210 17% 98%;
+}
+
+/* 
+:root {
+  --background-color: #ffffff;
+  --text-color: #1a1a1a;
+  --primary-color: #007bff;
+  --card-background: #f8f9fa;
+  --border-color: #ced4da;
+}
+
+.dark-theme {
+  --background-color: #1a1a1a;
+  --text-color: #f8f9fa;
+  --primary-color: #5d9cec;
+  --card-background: #2a2a2a;
+  --border-color: #444444;
+}
+*/
+
+html {
+  @apply scroll-smooth font-inter;
+}
+
+body {
+  @apply bg-background text-foreground font-inter transition-colors duration-300;
+}
+
+* {
+  /* @apply border-border; */
+}
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    @apply appearance-none m-0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility form-label {
+  @apply block text-base font-normal text-label capitalize;
+}
+
+@utility input-field {
+  @apply rounded-sm px-2 py-2.5 text-sm w-full border border-border focus:border-primary focus:outline-hidden focus:ring-1 focus:ring-primary;
+}
+@utility select-box {
+  @apply rounded-lg p-2 w-full bg-white focus:outline-hidden focus:ring-1 focus:ring-primary;
+}
+
+#root {
+  @apply max-w-full h-full my-0 mx-auto p-0;
+}
