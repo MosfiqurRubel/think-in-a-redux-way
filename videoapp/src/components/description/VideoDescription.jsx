@@ -4,16 +4,14 @@ import LikeUnlike from "./LikeUnlike";
 const VideoDescription = () => {
   return (
     <div>
-      <Heading level={4} text="Some video title" />
-
-      <h1 className="text-lg font-semibold tracking-tight text-slate-800">
-        Some video title
-      </h1>
+      <Heading level={5} text="Some video title" className="tracking-tight" />
       <div className="pb-4 flex items-center space-between border-b">
-        <Heading level={6} text="Uploaded on 23 Nov 2022" />
-        <h2 className="text-sm leading-[1.7142857] text-slate-600 w-full">
-          Uploaded on 23 Nov 2022
-        </h2>
+        <Heading
+          level={6}
+          fontWeight="normal"
+          text="Uploaded on 23 Nov 2022"
+          className="w-full text-slate-600 leading-6"
+        />
 
         <LikeUnlike />
       </div>

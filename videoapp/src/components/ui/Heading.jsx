@@ -9,9 +9,9 @@ const Heading = ({
   text,
   children,
   align = "left", // left | center | right
-  weight = "bold", // font-normal | font-medium | font-bold | font-extrabold
+  fontWeight = "semibold", // font-normal | font-medium | font-semibold | font-bold | font-extrabold
   className = "",
-  color = "text-foreground", // you can override Tailwind color
+  color = "text-heading", // you can override Tailwind color
 }) => {
   // ✅ pick the tag dynamically
   const Tag = `h${level}`;
@@ -23,7 +23,15 @@ const Heading = ({
     3: "text-2xl",
     4: "text-xl",
     5: "text-lg",
-    6: "text-base",
+    6: "text-sm",
+  };
+
+  const wightClasses = {
+    normal: "font-normal",
+    medium: "font-medium",
+    semibold: "font-semibold",
+    bold: "font-bold",
+    extrabold: "font-extrabold",
   };
 
   const alignClasses = {
@@ -34,7 +42,7 @@ const Heading = ({
 
   return (
     <Tag
-      className={`${sizeMap[level]} font-${weight} ${alignClasses[align]} ${color} ${className}`}
+      className={`${sizeMap[level]} ${wightClasses[fontWeight]} ${alignClasses[align]} ${color} ${className}`}
     >
       {children || text}
     </Tag>

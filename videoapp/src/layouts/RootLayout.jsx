@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "@/components/Navbar";
@@ -23,8 +23,8 @@ const RootLayout = () => {
       <Navbar isScrolled={isScrolled} />
       <main
         className={cn(
-          "pt-32 pb-3 2xl:px-6 min-h-full mx-auto",
-          isScrolled && "pt-[142px]"
+          "pt-17.5 pb-3 2xl:px-6 min-h-full mx-auto",
+          isScrolled && "pt-16.5"
         )}
       >
         <Outlet />

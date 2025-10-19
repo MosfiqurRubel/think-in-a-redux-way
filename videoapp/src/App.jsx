@@ -1,10 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import RootLayout from "@/layouts/RootLayout";
 
 import Home from "@/pages/Home";
 import Video from "@/pages/Video";
 import Wishlist from "@/pages/Wishlist";
-import MyCollection from "@/pages/MyCollection";
 import NotFound from "@/components/NotFound";
 
 function App() {
@@ -13,9 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
-          <Route path="video" element={<Video />} />
+          <Route path="videos/:id" element={<Video />} />
           <Route path="wishlist" element={<Wishlist />} />
-          <Route path="mycollection" element={<MyCollection />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
