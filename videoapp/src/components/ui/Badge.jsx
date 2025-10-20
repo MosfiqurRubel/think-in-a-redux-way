@@ -13,7 +13,7 @@ const Badge = ({
 
   const sizeClasses = {
     sm: "text-xs px-2 py-1",
-    md: "text-xs px-3 py-1",
+    md: "text-sm px-3 py-1",
     lg: "text-base px-4 py-1.5",
   };
 
@@ -27,27 +27,27 @@ const Badge = ({
 
   const variantColors = {
     primary: {
-      fill: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200",
+      fill: "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-200",
       outline:
         "border border-blue-500 text-blue-600 dark:text-blue-300 dark:border-blue-400",
     },
     success: {
-      fill: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200",
+      fill: "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-200",
       outline:
         "border border-green-500 text-green-600 dark:text-green-300 dark:border-green-400",
     },
     danger: {
-      fill: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200",
+      fill: "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-200",
       outline:
         "border border-red-500 text-red-600 dark:text-red-300 dark:border-red-400",
     },
     warning: {
       fill: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
       outline:
-        "border border-yellow-500 text-yellow-700 dark:text-yellow-300 dark:border-yellow-400",
+        "border border-yellow-500 text-yellow-600 dark:text-yellow-300 dark:border-yellow-400",
     },
     info: {
-      fill: "bg-sky-100 text-sky-700 dark:bg-sky-900 dark:text-sky-200",
+      fill: "bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-200",
       outline:
         "border border-sky-500 text-sky-600 dark:text-sky-300 dark:border-sky-400",
     },

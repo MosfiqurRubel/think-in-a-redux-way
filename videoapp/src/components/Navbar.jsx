@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/images/logo.svg";
-import SearchBar from "@/components/SearchBar";
+import SearchBar from "@/components/ui/SearchBar";
 
 const Navbar = ({ isScrolled }) => {
   return (
