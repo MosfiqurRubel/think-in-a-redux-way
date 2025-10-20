@@ -7,12 +7,12 @@ const VideoCard = ({ className, video }) => {
         <img
           src={video.thumbnail}
           alt={video.title}
-          className={`w-full h-auto ${className}`}
+          className={`w-full h-auto rounded-md ${className}`}
         />
       </Link>
       {/* <h3>{video.title}</h3> */}
       <p className="absolute right-2 bottom-2 bg-gray-900 text-gray-100 text-xs px-1 py">
-        12:10
+        {video.duration}
       </p>
     </div>
   );
