@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
-          <Route path="videos/:id" element={<Video />} />
+          <Route path="videos/:videoId" element={<Video />} />
           <Route path="wishlist" element={<Wishlist />} />
         </Route>
         <Route path="*" element={<NotFound />} />

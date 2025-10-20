@@ -21,7 +21,7 @@ const VideoGrid = () => {
   if (!isLoading && isError) content = <Loading loadingText={error} />;
 
   if (!isError && !isLoading && videos?.length === 0) {
-    <div className="col-span-12">No videos found!</div>;
+    content = <div className="col-span-12">No videos found!</div>;
   }
   if (!isError && !isLoading && videos?.length > 0) {
     content = videos.map((video) => (
