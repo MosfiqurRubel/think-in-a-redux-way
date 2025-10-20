@@ -23,7 +23,7 @@ const RootLayout = () => {
       <Navbar isScrolled={isScrolled} />
       <main
         className={cn(
-          "pt-17.5 pb-3 2xl:px-6 min-h-full mx-auto",
+          "pt-0 pb-3 2xl:px-6 min-h-full mx-auto",
           isScrolled && "pt-16.5"
         )}
       >
