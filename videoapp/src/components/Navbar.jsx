@@ -7,11 +7,11 @@ const Navbar = ({ isScrolled }) => {
   return (
     <nav
       className={cn(
-        "w-full z-40 transition-all duration-300 bg-slate-100 shadow-md py-3.5",
+        "w-full z-40 transition-all duration-300 bg-slate-100 px-5 py-3.5 shadow-md",
         isScrolled && "bg-white py-3 shadow-md fixed"
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <Link to="/">
           <img src={logo} className="h-10 object-contain" />
         </Link>

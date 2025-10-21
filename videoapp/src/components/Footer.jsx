@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-background text-heading border-t border-border mt-12">
-      <div className="container py-8 px-6 flex flex-wrap justify-between items-center">
+      <div className="py-8 px-6 flex flex-wrap justify-between items-center">
         <p>
           &copy; {new Date().getFullYear()} Mosfiqur Rahman. All rights
           reserved.

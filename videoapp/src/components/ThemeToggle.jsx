@@ -20,8 +20,7 @@ const ThemeToggle = () => {
     <button
       onClick={() => setDarkMode(!darkMode)}
       className={cn(
-        "fixed max-sm:hidden top-4.5 right-5 z-[999] p-2 rounded-full transition-colors duration-300 cursor-pointer",
-        "focus:outline-hidden"
+        "fixed max-sm:hidden bottom-20 right-4 z-[999] inline-flex items-center justify-center gap-2 bg-foreground text-white p-3 font-medium cursor-pointer rounded-full transition-colors focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none"
       )}
     >
       {darkMode ? (

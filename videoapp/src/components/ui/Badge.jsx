@@ -7,13 +7,14 @@ const Badge = ({
   rounded = "full", // none | sm | md | lg | full
   className = "",
   icon: Icon, // optional icon component
+  onClick,
 }) => {
   const baseStyle =
     "inline-flex items-center gap-1 select-none transition-all duration-200";
 
   const sizeClasses = {
     sm: "text-xs px-2 py-1",
-    md: "text-sm px-3 py-1",
+    md: "text-sm px-3 py-1.5",
     lg: "text-base px-4 py-1.5",
   };
 
@@ -28,6 +29,11 @@ const Badge = ({
   const variantColors = {
     primary: {
       fill: "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-200",
+      outline:
+        "border border-blue-500 text-blue-600 dark:text-blue-300 dark:border-blue-400",
+    },
+    active: {
+      fill: "bg-blue-600 text-white dark:bg-blue-900 dark:text-blue-200",
       outline:
         "border border-blue-500 text-blue-600 dark:text-blue-300 dark:border-blue-400",
     },
@@ -63,6 +69,7 @@ const Badge = ({
 
   return (
     <span
+      onClick={onClick}
       className={`${baseStyle} ${sizeClasses[size]} ${roundedClasses[rounded]} ${colorClasses} ${className}`}
     >
       {Icon && <Icon className="w-4 h-4" />}
