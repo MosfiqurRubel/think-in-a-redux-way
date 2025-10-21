@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getVideo } from "./videoAPI";
+import { getVideo, updateLikeDislike } from "./videoAPI";
 
 const initialState = {
   video: {},
@@ -8,11 +8,20 @@ const initialState = {
   error: null,
 };
 
-// ✅ Async thunk for fetching video
+// ✅ Async thunk for fetching single video
 export const fetchVideo = createAsyncThunk("video/fetchVideo", async (id) => {
   const video = await getVideo(id);
   return video;
 });
+
+// ✅ Async thunk for Like or Dislike Update
+export const toggleLikeDislike = createAsyncThunk(
+  "likeDislike/toggleLikeDislike",
+  async ({ id, data }) => {
+    const updateVideo = await updateLikeDislike({ id, data });
+    return updateVideo;
+  }
+);
 
 const videoSlice = createSlice({
   name: "video",
@@ -32,6 +41,10 @@ const videoSlice = createSlice({
         state.video = {};
         state.isError = true;
         state.error = action.error?.message;
+      })
+      // ✅ Like/Dislike update
+      .addCase(toggleLikeDislike.fulfilled, (state, action) => {
+        state.video = action.payload; // update local video object
       });
   },
 });
