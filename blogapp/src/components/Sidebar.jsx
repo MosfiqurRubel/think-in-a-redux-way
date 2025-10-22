@@ -6,7 +6,7 @@ import Heading from "@/components/ui/Heading";
 const Sidebar = () => {
   const [formData, setFormData] = useState({
     sort: "",
-    role: "all",
+    filter: "all",
   });
 
   const sortItems = [
@@ -50,10 +50,10 @@ const Sidebar = () => {
           <div className="flex items-center gap-3">
             <Checkbox
               type="radio"
-              name="role"
+              name="filter"
               id="all"
               value="all"
-              checked={formData.role === "all"}
+              checked={formData.filter === "all"}
               onChange={handleChange}
               color="primary"
             />
@@ -63,10 +63,10 @@ const Sidebar = () => {
           <div className="flex items-center gap-3">
             <Checkbox
               type="radio"
-              name="role"
+              name="filter"
               id="saved"
               value="saved"
-              checked={formData.role === "saved"}
+              checked={formData.filter === "saved"}
               onChange={handleChange}
               color="info"
             />

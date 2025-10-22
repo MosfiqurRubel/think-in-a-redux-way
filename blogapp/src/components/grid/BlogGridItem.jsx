@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ThumbsUp } from "lucide-react";
+import Tags from "@/components/Tags";
 
 const BlogGridItem = ({ blog = {} }) => {
   const { id, title, image, tags, createdAt, likes, isSaved } = blog;
@@ -23,9 +24,7 @@ const BlogGridItem = ({ blog = {} }) => {
           {title}
         </Link>
         <div className="flex flex-wrap gap-x-2 gap-y-1 text-gray-500 my-2">
-          {tags.map((tag, index) => (
-            <span key={index}>#{tag},</span>
-          ))}
+          <Tags tags={tags} />
         </div>
         {isSaved && (
           <div className="flex gap-2 mt-4">
