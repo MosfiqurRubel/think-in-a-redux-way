@@ -14,7 +14,6 @@ function App() {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="blogs/:postId" element={<Post />} />
-          {/* <Route path="videos/:videoId" element={<Video />} /> */}
           <Route path="wishlist" element={<Wishlist />} />
         </Route>
         <Route path="*" element={<NotFound />} />

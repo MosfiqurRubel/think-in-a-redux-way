@@ -1,22 +1,32 @@
 const Select = ({
-  name = "select",
-  options = [],
+  id,
+  name,
   value,
+  options = [],
   onChange,
   required = false,
-  placeholder = "Select an option",
+  disabled = false,
   className = "",
-  ...rest
+  placeholder = "Select",
 }) => {
-  // console.log("Options ", options);
+  const handleChange = (e) => {
+    onChange?.({
+      target: {
+        name: name,
+        value: e.target.value,
+      },
+    });
+  };
+
   return (
     <select
+      id={id}
       name={name}
       value={value}
-      onChange={onChange}
+      onChange={handleChange}
       required={required}
+      disabled={disabled}
       className={`select-box ${className}`}
-      {...rest}
     >
       <option value="">{placeholder}</option>
       {options?.map((opt) => (

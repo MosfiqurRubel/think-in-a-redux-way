@@ -20,7 +20,7 @@ const Button = ({
   ...rest
 }) => {
   const baseStyle =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none relative overflow-hidden";
+    "inline-flex items-center justify-center transition-all duration-200 focus:outline-none relative overflow-hidden";
 
   const sizeClasses = {
     sm: "text-sm px-3 py-1.5",
@@ -39,20 +39,29 @@ const Button = ({
 
   const variantColors = {
     primary: {
-      fill: "bg-primary/90 hover:bg-primary text-white",
-      outline: "border border-primary text-primary hover:bg-primary/10",
+      fill: "border border-transparent bg-gray-800 text-white hover:bg-gray-900",
+      outline:
+        "border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500",
+    },
+    secondary: {
+      fill: "border border-transparent bg-gray-500 text-white hover:bg-gray-600",
+      outline:
+        "border border-gray-500 text-gray-500 hover:border-gray-800 hover:text-gray-800",
     },
     success: {
-      fill: "bg-green-600 hover:bg-green-700 text-white ",
-      outline: "border border-green-500 text-green-600 hover:bg-green-50",
+      fill: "border border-transparent bg-teal-500 text-white hover:bg-teal-600",
+      outline:
+        "border border-teal-500 text-teal-500 hover:border-teal-400 hover:text-teal-400",
     },
     danger: {
-      fill: "bg-red-600 hover:bg-red-700 text-white ",
-      outline: "border border-red-500 text-red-600 hover:bg-red-50 ",
+      fill: "border border-transparent bg-red-500 text-white hover:bg-red-600",
+      outline:
+        "border border-red-500 text-red-500 hover:border-red-400 hover:text-red-400",
     },
     warning: {
-      fill: "bg-yellow-500 hover:bg-yellow-600 text-black ",
-      outline: "border border-yellow-500 text-yellow-600 hover:bg-yellow-50 ",
+      fill: "border border-transparent bg-yellow-500 text-white hover:bg-yellow-600",
+      outline:
+        "border border-yellow-500 text-yellow-500 hover:border-yellow-400",
     },
     info: {
       fill: "bg-sky-600 hover:bg-sky-700 text-white ",

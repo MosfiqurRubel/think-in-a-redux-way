@@ -7,9 +7,22 @@ const Input = ({
   max,
   required = false,
   value,
-  className,
+  disabled = false,
+  className = "",
   onChange,
 }) => {
+  // ✅ একদম unified handleChange
+  const handleChange = (e) => {
+    if (disabled) return;
+
+    onChange?.({
+      target: {
+        name: name,
+        value: e.target.value,
+      },
+    });
+  };
+
   return (
     <input
       id={id}
@@ -19,8 +32,9 @@ const Input = ({
       max={max}
       placeholder={placeholder}
       required={required}
+      disabled={disabled}
       value={value}
-      onChange={onChange}
+      onChange={handleChange}
       className={`input-field ${className}`}
     />
   );

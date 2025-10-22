@@ -1,15 +1,9 @@
-// const Heading = ({ text, className = "" }) => {
-//   return <h4 className={`text-xl font-bold ${className}`}>{text}</h4>;
-// };
-
-// export default Heading;
-
 const Heading = ({
   level = 4, // ✅ choose heading level: 1–6
   text,
   children,
   align = "left", // left | center | right
-  fontWeight = "semibold", // font-normal | font-medium | font-semibold | font-bold | font-extrabold
+  fontWeight = "font-medium", // font-normal | font-medium | font-semibold | font-bold | font-extrabold
   className = "",
   color = "text-heading", // you can override Tailwind color
 }) => {

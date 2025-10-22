@@ -1,17 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/images/logo.svg";
-import SearchBar from "@/components/ui/SearchBar";
+import Button from "@/components/ui/Button";
 
 const Navbar = ({ isScrolled }) => {
   return (
     <nav
       className={cn(
-        "w-full z-40 transition-all duration-300 bg-slate-100 px-5 py-3.5 shadow-md",
-        isScrolled && "bg-white py-3 shadow-md fixed"
+        "w-full z-40 transition-all duration-300 bg-slate-50 border-b border-border py-3.5",
+        isScrolled && "bg-white py-3 fixed"
       )}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between container">
         <Link to="/">
           <img src={logo} className="h-10 object-contain" />
         </Link>
@@ -38,8 +38,16 @@ const Navbar = ({ isScrolled }) => {
             </NavLink>
           </li>
         </ul> */}
-
-        <SearchBar />
+        <div className="flex gap-x-4">
+          <Button variant="primary" text="sign in" className="capitalize" />
+          <Button
+            variant="secondary"
+            outline
+            text="sign up"
+            className="capitalize"
+          />
+        </div>
+        {/* <SearchBar /> */}
       </div>
     </nav>
   );
