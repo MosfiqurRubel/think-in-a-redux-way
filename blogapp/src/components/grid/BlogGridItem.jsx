@@ -28,7 +28,7 @@ const BlogGridItem = ({ blog = {} }) => {
         </div>
         {isSaved && (
           <div className="flex gap-2 mt-4">
-            <span className="lws-badge"> Saved </span>
+            <span className="lws-badge">Saved</span>
           </div>
         )}
       </div>

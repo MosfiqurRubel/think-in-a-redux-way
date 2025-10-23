@@ -2,9 +2,15 @@ import { Bookmark, ThumbsUp } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Tags from "@/components/Tags";
+import { useState } from "react";
 
 const BlogDescription = ({ blog }) => {
   const { title, description, image, tags, likes, isSaved } = blog || {};
+  const [isToggled, setIsToggled] = useState(isSaved);
+
+  const handleSave = () => {
+    setIsToggled((prevIsToggled) => !prevIsToggled);
+  };
 
   return (
     <section className="post">
@@ -27,12 +33,13 @@ const BlogDescription = ({ blog }) => {
           <ThumbsUp size={18} /> {likes}
         </Button>
         <Button
+          onClick={handleSave}
           size="icon"
           className={`font-bold gap-x-1 hover:text-teal-500 ${
-            isSaved === true ? "text-teal-500" : ""
+            isToggled ? "text-teal-500" : ""
           }`}
         >
-          <Bookmark size={18} /> {isSaved === true ? "Saved" : "Save"}
+          <Bookmark size={18} /> {isToggled ? "Saved" : "Save"}
         </Button>
       </div>
       <div className="mt-6">

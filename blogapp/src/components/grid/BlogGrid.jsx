@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import BlogGridItem from "./blogGridItem";
+import BlogGridItem from "./BlogGridItem";
 import { useEffect } from "react";
 import { fetchBlogs } from "@/features/blogs/blogsSlice";
 import Loading from "@/components/ui/Loading";

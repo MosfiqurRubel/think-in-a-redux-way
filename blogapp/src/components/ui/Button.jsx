@@ -39,7 +39,7 @@ const Button = ({
 
   const variantColors = {
     primary: {
-      fill: "border border-transparent bg-gray-800 text-white hover:bg-gray-900",
+      fill: "border border-transparent bg-gray-800 text-white hover:bg-gray-600",
       outline:
         "border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500",
     },

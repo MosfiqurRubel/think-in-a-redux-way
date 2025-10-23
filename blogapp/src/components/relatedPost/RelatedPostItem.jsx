@@ -13,14 +13,14 @@ const RelatedPostItem = ({ post }) => {
         <div className="p-4">
           <Link
             to={`/blogs/${id}`}
-            className="text-lg post-title lws-RelatedPostTitle"
+            className="text-lg post-title lws-RelatedPostTitle hover:text-[#07a6ba]"
           >
             {title}
           </Link>
-          <div className="flex flex-wrap gap-1 text-gray-500 my-1">
+          <div className="flex flex-wrap gap-1 text-gray-700 my-1">
             <Tags tags={tags} />
           </div>
-          <p>{createdAt}</p>
+          <p className="text-gray-500">{createdAt}</p>
         </div>
       </div>
     </div>
