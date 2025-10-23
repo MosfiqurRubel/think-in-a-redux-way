@@ -5,3 +5,10 @@ export const getBlog = async (id) => {
   const res = await axios.get(`/blogs/${id}`);
   return res.data;
 };
+
+// Update blog likes (increment)
+export const updateLike = async ({ id, data }) => {
+  const res = await axios.patch(`/blogs/${id}`, data);
+
+  return res.data;
+};

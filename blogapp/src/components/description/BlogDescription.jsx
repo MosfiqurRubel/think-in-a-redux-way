@@ -3,9 +3,10 @@ import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Tags from "@/components/Tags";
 import { useState } from "react";
+import LikeUnlike from "@/components/ui/LikeUnlike";
 
 const BlogDescription = ({ blog }) => {
-  const { title, description, image, tags, likes, isSaved } = blog || {};
+  const { title, description, image, tags, isSaved } = blog || {};
   const [isToggled, setIsToggled] = useState(isSaved);
 
   const handleSave = () => {
@@ -22,22 +23,21 @@ const BlogDescription = ({ blog }) => {
       />
       <Heading level="3" fontWeight="bold" text={title} className="mt-6 mb-2" />
 
-      <div
-        className="flex flex-wrap gap-x-2 gap-y-1 text-gray-500 my-2"
-        id="lws-singleTags"
-      >
-        <Tags tags={tags} />
-      </div>
+      <Tags
+        tags={tags}
+        prefix="#"
+        separator=", "
+        className="gap-x-2 gap-y-1 my-2"
+      />
+
       <div className="flex items-center gap-6">
-        <Button size="icon" className="font-bold gap-x-1 hover:text-teal-500">
-          <ThumbsUp size={18} /> {likes}
-        </Button>
+        <LikeUnlike />
+
         <Button
           onClick={handleSave}
-          size="icon"
-          className={`font-bold gap-x-1 hover:text-teal-500 ${
-            isToggled ? "text-teal-500" : ""
-          }`}
+          size="auto"
+          variant="iconFlat"
+          className="font-bold text-lg"
         >
           <Bookmark size={18} /> {isToggled ? "Saved" : "Save"}
         </Button>

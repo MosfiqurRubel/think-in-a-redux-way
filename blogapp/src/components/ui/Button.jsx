@@ -23,10 +23,10 @@ const Button = ({
     "inline-flex items-center justify-center transition-all duration-200 focus:outline-none relative overflow-hidden";
 
   const sizeClasses = {
+    auto: "gap-1",
     sm: "text-sm px-3 py-1.5",
     md: "text-base px-4 py-2",
     lg: "text-base px-5 py-2.5",
-    icon: "p-0", // ✅ For icon-only buttons
   };
 
   const roundedClasses = {
@@ -66,6 +66,10 @@ const Button = ({
     info: {
       fill: "bg-sky-600 hover:bg-sky-700 text-white ",
       outline: "border border-sky-500 text-sky-600 hover:bg-sky-50",
+    },
+    iconFlat: {
+      fill: "text-gray-500 hover:bg-transparent hover:text-primary",
+      outline: "",
     },
     custom: {
       fill: "",

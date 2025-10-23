@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { ThumbsUp } from "lucide-react";
 import Tags from "@/components/Tags";
+import LikeUnlike from "@/components/ui/LikeUnlike";
 
 const BlogGridItem = ({ blog = {} }) => {
-  const { id, title, image, tags, createdAt, likes, isSaved } = blog;
+  const { id, title, image, tags = [], createdAt, isSaved } = blog;
 
   return (
     <div className="lws-card">
@@ -13,9 +13,8 @@ const BlogGridItem = ({ blog = {} }) => {
       <div className="p-4">
         <div className="lws-card-header">
           <p className="lws-publishedDate">{createdAt}</p>
-          <p className="lws-likeCount flex items-center gap-1">
-            <ThumbsUp size={16} /> {likes}
-          </p>
+
+          <LikeUnlike />
         </div>
         <Link
           to={`/blogs/${id}`}
@@ -23,9 +22,15 @@ const BlogGridItem = ({ blog = {} }) => {
         >
           {title}
         </Link>
-        <div className="flex flex-wrap gap-x-2 gap-y-1 text-gray-500 my-2">
-          <Tags tags={tags} />
-        </div>
+
+        <Tags
+          tags={tags}
+          prefix="#"
+          separator=", "
+          className=" gap-x-2 gap-y-1 text-gray-500 my-2"
+          tagClass="text-gray-500"
+        />
+
         {isSaved && (
           <div className="flex gap-2 mt-4">
             <span className="lws-badge">Saved</span>

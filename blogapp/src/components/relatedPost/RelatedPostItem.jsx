@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Tags from "@/components/Tags";
 
 const RelatedPostItem = ({ post }) => {
-  const { id, title, image, tags, createdAt } = post || {};
+  const { id, title, image, tags = [], createdAt } = post || {};
 
   return (
     <div className="space-y-4 related-post-container">
@@ -17,9 +17,9 @@ const RelatedPostItem = ({ post }) => {
           >
             {title}
           </Link>
-          <div className="flex flex-wrap gap-1 text-gray-700 my-1">
-            <Tags tags={tags} />
-          </div>
+
+          <Tags tags={tags} prefix="#" separator=", " />
+
           <p className="text-gray-500">{createdAt}</p>
         </div>
       </div>
