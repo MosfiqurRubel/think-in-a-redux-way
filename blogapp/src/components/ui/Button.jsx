@@ -71,6 +71,10 @@ const Button = ({
       fill: "text-gray-500 hover:bg-transparent hover:text-primary",
       outline: "",
     },
+    iconFlatFill: {
+      fill: "text-primary",
+      outline: "",
+    },
     custom: {
       fill: "",
       outline: "",

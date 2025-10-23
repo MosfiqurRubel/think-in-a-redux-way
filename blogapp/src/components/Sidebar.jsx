@@ -1,44 +1,36 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { sortChanged, filterChanged } from "@/features/blogs/blogsSlice";
 import Select from "@/components/ui/Select";
 import Checkbox from "@/components/ui/Checkbox";
 import Heading from "@/components/ui/Heading";
 
 const Sidebar = () => {
-  const [formData, setFormData] = useState({
-    sort: "",
-    filter: "all",
-  });
+  const dispatch = useDispatch();
+  const { sortBy, filterBy } = useSelector((state) => state.blogs);
 
   const sortItems = [
     { label: "Newest", value: "newest" },
     { label: "Most Liked", value: "mostliked" },
   ];
 
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-
-    console.log(e.target.value);
+  const handleSort = (e) => {
+    dispatch(sortChanged(e.target.value));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(formData);
+  const handleFilter = (e) => {
+    dispatch(filterChanged(e.target.value));
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-lg:flex space-y-6">
+    <aside className="max-lg:flex space-y-6">
       <div className="sidebar-content min-w-49 space-y-2">
         <Heading level="5" text="Sort" />
 
         <Select
           name="sort"
           options={sortItems}
-          value={formData.sort}
-          onChange={handleChange}
+          value={sortBy}
+          onChange={handleSort}
           placeholder="Default"
           id="lws-sort"
         />
@@ -53,8 +45,8 @@ const Sidebar = () => {
               name="filter"
               id="all"
               value="all"
-              checked={formData.filter === "all"}
-              onChange={handleChange}
+              checked={filterBy === "all"}
+              onChange={handleFilter}
               color="primary"
             />
             <label htmlFor="all">All</label>
@@ -66,15 +58,15 @@ const Sidebar = () => {
               name="filter"
               id="saved"
               value="saved"
-              checked={formData.filter === "saved"}
-              onChange={handleChange}
+              checked={filterBy === "saved"}
+              onChange={handleFilter}
               color="info"
             />
             <label htmlFor="saved">Saved</label>
           </div>
         </div>
       </div>
-    </form>
+    </aside>
   );
 };
 

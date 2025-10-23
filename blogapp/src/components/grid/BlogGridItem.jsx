@@ -3,7 +3,7 @@ import Tags from "@/components/Tags";
 import LikeUnlike from "@/components/ui/LikeUnlike";
 
 const BlogGridItem = ({ blog = {} }) => {
-  const { id, title, image, tags = [], createdAt, isSaved } = blog;
+  const { id, title, image, tags = [], createdAt, isSaved, likes = 0 } = blog;
 
   return (
     <div className="lws-card">
@@ -14,7 +14,7 @@ const BlogGridItem = ({ blog = {} }) => {
         <div className="lws-card-header">
           <p className="lws-publishedDate">{createdAt}</p>
 
-          <LikeUnlike />
+          <LikeUnlike id={id} likes={likes} />
         </div>
         <Link
           to={`/blogs/${id}`}

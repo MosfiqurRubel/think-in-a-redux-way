@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBlog, updateLike } from "./blogAPI";
+import { getBlog, toggleSave, updateLike } from "./blogAPI";
 
 const initialState = {
   blog: {},
@@ -20,6 +20,15 @@ export const incrementLike = createAsyncThunk(
   async ({ id, data }) => {
     const updateBlog = await updateLike({ id, data });
     return updateBlog;
+  }
+);
+
+// ✅ Async thunk for toggle save
+export const toggleSaveBlog = createAsyncThunk(
+  "blog/toggleSave",
+  async ({ id, data }) => {
+    const updatedBlog = await toggleSave({ id, data });
+    return updatedBlog;
   }
 );
 
@@ -46,6 +55,11 @@ const blogSlice = createSlice({
       // ✅ Likes update
       .addCase(incrementLike.fulfilled, (state, action) => {
         state.blog = action.payload; // update local
+      })
+
+      // ✅ Save toggle update
+      .addCase(toggleSaveBlog.fulfilled, (state, action) => {
+        state.blog = action.payload;
       });
   },
 });

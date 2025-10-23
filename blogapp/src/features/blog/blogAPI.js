@@ -12,3 +12,9 @@ export const updateLike = async ({ id, data }) => {
 
   return res.data;
 };
+
+// ✅ Update blog save toggle
+export const toggleSave = async ({ id, data }) => {
+  const res = await axios.patch(`/blogs/${id}`, data);
+  return res.data;
+};

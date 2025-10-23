@@ -1,16 +1,25 @@
-import { Bookmark, ThumbsUp } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { toggleSaveBlog } from "@/features/blog/blogSlice";
+import { Bookmark } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Tags from "@/components/Tags";
-import { useState } from "react";
 import LikeUnlike from "@/components/ui/LikeUnlike";
 
 const BlogDescription = ({ blog }) => {
-  const { title, description, image, tags, isSaved } = blog || {};
-  const [isToggled, setIsToggled] = useState(isSaved);
+  const dispatch = useDispatch();
+  const {
+    id,
+    title,
+    description,
+    image,
+    tags,
+    likes = 0,
+    isSaved,
+  } = blog || {};
 
   const handleSave = () => {
-    setIsToggled((prevIsToggled) => !prevIsToggled);
+    dispatch(toggleSaveBlog({ id, data: { isSaved: !isSaved } }));
   };
 
   return (
@@ -31,15 +40,15 @@ const BlogDescription = ({ blog }) => {
       />
 
       <div className="flex items-center gap-6">
-        <LikeUnlike />
+        <LikeUnlike id={id} likes={likes} single />
 
         <Button
           onClick={handleSave}
           size="auto"
-          variant="iconFlat"
+          variant={`${isSaved ? "iconFlatFill" : "iconFlat"}`}
           className="font-bold text-lg"
         >
-          <Bookmark size={18} /> {isToggled ? "Saved" : "Save"}
+          <Bookmark size={18} /> {isSaved ? "Saved" : "Save"}
         </Button>
       </div>
       <div className="mt-6">

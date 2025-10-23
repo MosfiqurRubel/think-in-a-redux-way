@@ -1,15 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { incrementLike } from "@/features/blog/blogSlice";
+import { updateBlogData } from "@/features/blogs/blogsSlice";
 import { ThumbsUp } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { incrementLike } from "@/features/blog/blogSlice";
 
-const LikeUnlike = () => {
+const LikeUnlike = ({ id, likes, single = false }) => {
   const dispatch = useDispatch();
-  const { blog } = useSelector((state) => state.blog);
-  const { id, likes = 0 } = blog || {};
 
   const handleLike = () => {
-    dispatch(incrementLike({ id, data: { likes: likes + 1 } }));
+    const data = { likes: likes + 1 };
+
+    single
+      ? dispatch(incrementLike({ id, data }))
+      : dispatch(updateBlogData({ id, data }));
+    // dispatch(updateBlogData({ id, data: { likes: likes + 1 } }));
   };
 
   return (
