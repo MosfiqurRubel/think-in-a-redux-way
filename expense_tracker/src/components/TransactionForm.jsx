@@ -1,80 +1,127 @@
-import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { createTransaction } from "@/features/transaction/transactionSlice";
 import Checkbox from "@/components/ui/Checkbox";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
 const TransactionForm = () => {
-  const [input, setInput] = useState({ transaction_type: "income" });
+  const dispatch = useDispatch();
+  const { isLoading, isError } = useSelector((state) => state.transaction);
+
+  const empty = {
+    name: "",
+    type: "",
+    amount: "",
+  };
+  const [data, setData] = useState(empty);
 
   const handleChange = (e) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCreate = (e) => {
+    e.preventDefault();
+
+    console.log("data --- ", data);
+
+    const payload = {
+      ...data,
+      amount: Number(data.amount),
+    };
+
+    dispatch(createTransaction(payload));
+
+    setData(empty);
   };
 
   return (
-    <form className="bg-card p-5 rounded-lg w-[320px] sm:w-[400px] shadow">
+    <form
+      onSubmit={handleCreate}
+      className="bg-card p-5 rounded-lg w-[320px] sm:w-[400px] shadow"
+    >
       <h3 className="text-lg font-semibold mb-3">Add new transaction</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-3 mb-3">
-        <Label text="name" htmlFor="name" className="self-center" />
+        <Label text="name" htmlFor="name" required className="self-center" />
         <Input
           id="name"
           name="name"
-          placeholder="My Salary"
+          value={data.name}
+          placeholder="Enter name"
+          required
           onChange={handleChange}
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-3 mb-3">
-        <label className="self-center text-sm font-medium">Type</label>
+        <Label text="Type" htmlFor="type" required className="self-center" />
 
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
             <Checkbox
               type="radio"
               size="sm"
-              name="transaction_type"
+              name="type"
               id="income"
               value="income"
-              checked={input.transaction_type === "income"}
-              onChange={handleChange}
               color="primary"
+              required={true}
+              checked={data.type === "income"}
+              onChange={handleChange}
             />
-            <label htmlFor="transaction_type">Income</label>
+
+            <Label text="Income" htmlFor="type" className="self-center" />
           </div>
           <div className="flex items-center gap-2">
             <Checkbox
               type="radio"
               size="sm"
-              name="transaction_type"
+              name="type"
               id="expense"
               value="expense"
-              checked={input.transaction_type === "expense"}
+              checked={data.type === "expense"}
               onChange={handleChange}
               color="primary"
             />
-            <label htmlFor="transaction_type">Expense</label>
+            <Label text="Expense" htmlFor="type" className="self-center" />
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-3 mb-3">
-        <Label text="Amount" htmlFor="amount" className="self-center" />
+        <Label
+          text="Amount"
+          htmlFor="amount"
+          required
+          className="self-center"
+        />
         <Input
           id="amount"
           name="amount"
           type="number"
-          placeholder="300"
+          placeholder="Enter amount"
+          required
+          value={data.amount}
           onChange={handleChange}
         />
       </div>
 
       <Button
+        disabled={isLoading}
         type="submit"
         variant="primary"
         text="Add Transaction"
         className="w-full capitalize"
       />
+
+      {!isLoading && isError && (
+        <p className="text-danger">There was an error occured!</p>
+      )}
 
       {/* <Button
         type="submit"
