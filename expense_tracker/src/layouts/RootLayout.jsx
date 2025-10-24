@@ -8,7 +8,7 @@ const RootLayout = () => {
     <div className="flex flex-col min-h-screen">
       <ThemeToggle />
       <Navbar />
-      <main className="grow flex justify-center">
+      <main className="grow flex-center">
         <div className="w-full max-w-5xl flex flex-col items-center gap-6 py-6">
           <Outlet />
         </div>

@@ -1,7 +1,12 @@
 import { SquarePen, Trash } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 const TransactionItem = ({ type, title, amount }) => {
   const bgClass = type === "income" ? "bg-primary" : "bg-danger";
+
+  const handleLike = () => {
+    //
+  };
 
   return (
     <li
@@ -10,12 +15,23 @@ const TransactionItem = ({ type, title, amount }) => {
       <p>{title}</p>
       <div className="flex items-center gap-3">
         <p className="text-lg font-medium">৳ {amount}</p>
-        <button className="hover:text-blue-200 transition">
+
+        <Button
+          size="auto"
+          variant="iconFlat"
+          rounded="full"
+          onClick={handleLike}
+        >
           <SquarePen size={18} />
-        </button>
-        <button className="hover:text-blue-200 transition">
+        </Button>
+        <Button
+          size="auto"
+          variant="iconFlatDanger"
+          rounded="full"
+          onClick={handleLike}
+        >
           <Trash size={18} />
-        </button>
+        </Button>
       </div>
     </li>
   );

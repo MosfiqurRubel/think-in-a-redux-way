@@ -39,14 +39,14 @@ const Button = ({
 
   const variantColors = {
     primary: {
-      fill: "border border-transparent bg-gray-800 text-white hover:bg-gray-600",
+      fill: "border border-transparent bg-primary text-white hover:bg-gray-600",
       outline:
-        "border border-gray-800 text-gray-800 hover:border-gray-500 hover:text-gray-500",
+        "border border-primary text-primary hover:border-border hover:text-border",
     },
     secondary: {
-      fill: "border border-transparent bg-gray-500 text-white hover:bg-gray-600",
+      fill: "border border-transparent bg-border text-white hover:bg-gray-600",
       outline:
-        "border border-gray-500 text-gray-500 hover:border-gray-800 hover:text-gray-800",
+        "border border-border text-foreground hover:border-primary hover:text-primary",
     },
     success: {
       fill: "border border-transparent bg-teal-500 text-white hover:bg-teal-600",
@@ -54,9 +54,9 @@ const Button = ({
         "border border-teal-500 text-teal-500 hover:border-teal-400 hover:text-teal-400",
     },
     danger: {
-      fill: "border border-transparent bg-red-500 text-white hover:bg-red-600",
+      fill: "border border-transparent bg-danger text-white hover:bg-red-600",
       outline:
-        "border border-red-500 text-red-500 hover:border-red-400 hover:text-red-400",
+        "border border-danger text-danger hover:border-red-400 hover:text-red-400",
     },
     warning: {
       fill: "border border-transparent bg-yellow-500 text-white hover:bg-yellow-600",
@@ -68,11 +68,11 @@ const Button = ({
       outline: "border border-sky-500 text-sky-600 hover:bg-sky-50",
     },
     iconFlat: {
-      fill: "text-gray-500 hover:bg-transparent hover:text-primary",
+      fill: "text-white hover:bg-transparent hover:text-blue-200",
       outline: "",
     },
-    iconFlatFill: {
-      fill: "text-primary",
+    iconFlatDanger: {
+      fill: "text-white hover:bg-transparent hover:text-danger",
       outline: "",
     },
     custom: {

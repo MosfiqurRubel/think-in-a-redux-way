@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Checkbox from "@/components/ui/Checkbox";
+import Label from "@/components/ui/Label";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 
 const TransactionForm = () => {
   const [input, setInput] = useState({ transaction_type: "income" });
@@ -9,18 +12,16 @@ const TransactionForm = () => {
   };
 
   return (
-    <form className="bg-gray-50 p-5 rounded-lg w-[320px] sm:w-[400px] shadow">
+    <form className="bg-card p-5 rounded-lg w-[320px] sm:w-[400px] shadow">
       <h3 className="text-lg font-semibold mb-3">Add new transaction</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-3 mb-3">
-        <label htmlFor="name" className="self-center text-sm font-medium">
-          Name
-        </label>
-        <input
+        <Label text="name" htmlFor="name" className="self-center" />
+        <Input
           id="name"
-          type="text"
+          name="name"
           placeholder="My Salary"
-          className="border border-gray-300 rounded px-3 py-1 outline-none focus:ring-2 focus:ring-primary/40"
+          onChange={handleChange}
         />
       </div>
 
@@ -58,30 +59,29 @@ const TransactionForm = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-3 mb-3">
-        <label htmlFor="amount" className="self-center text-sm font-medium">
-          Amount
-        </label>
-        <input
+        <Label text="Amount" htmlFor="amount" className="self-center" />
+        <Input
           id="amount"
+          name="amount"
           type="number"
           placeholder="300"
-          className="border border-gray-300 rounded px-3 py-1 outline-none focus:ring-2 focus:ring-primary/40"
+          onChange={handleChange}
         />
       </div>
 
-      <button
+      <Button
         type="submit"
-        className="w-full bg-primary text-white py-2 rounded-lg hover:bg-indigo-800 transition"
-      >
-        Add Transaction
-      </button>
+        variant="primary"
+        text="Add Transaction"
+        className="w-full capitalize"
+      />
 
-      <button
-        type="button"
-        className="hidden mt-3 w-full bg-danger text-white py-2 rounded-lg hover:bg-red-800 transition"
-      >
-        Cancel Edit
-      </button>
+      {/* <Button
+        type="submit"
+        variant="danger"
+        text="Cancel Edit"
+        className="w-full capitalize"
+      /> */}
     </form>
   );
 };
