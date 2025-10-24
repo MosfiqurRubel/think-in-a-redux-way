@@ -1,12 +1,33 @@
+import { useSelector } from "react-redux";
 import TransactionItem from "./TransactionItem";
+import Loading from "@/components/ui/Loading";
 
-const TransactionList = () => (
-  <div className="w-[320px] sm:w-[400px] max-h-[500px] overflow-y-auto">
-    <p className="text-left text-lg font-semibold my-3">Your Transactions:</p>
-    <ul className="space-y-3">
-      <TransactionItem type="income" title="Earned this month" amount="100" />
-    </ul>
-  </div>
-);
+const TransactionList = () => {
+  const { transactions, isLoading, isError, error } = useSelector(
+    (state) => state.transaction
+  );
+
+  // decide what to render
+  let content;
+
+  if (isLoading) content = <Loading />;
+  if (!isLoading && isError) content = <Loading loadingText={error} />;
+
+  if (!isError && !isLoading && transactions?.length === 0) {
+    content = <div className="col-span-12">No transactions found!</div>;
+  }
+  if (!isError && !isLoading && transactions?.length > 0) {
+    content = transactions.map((transaction) => (
+      <TransactionItem key={transaction.id} transaction={transaction} />
+    ));
+  }
+
+  return (
+    <div className="w-[320px] sm:w-[400px] max-h-[500px] overflow-y-auto">
+      <p className="text-left text-lg font-semibold my-3">Your Transactions:</p>
+      <ul className="space-y-3">{content}</ul>
+    </div>
+  );
+};
 
 export default TransactionList;
