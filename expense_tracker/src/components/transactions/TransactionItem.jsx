@@ -5,6 +5,7 @@ import {
 } from "@/features/transaction/transactionSlice";
 import { SquarePen, Trash } from "lucide-react";
 import Button from "@/components/ui/Button";
+import numberWithCommas from "@/utils/numberWithCommas";
 
 const TransactionItem = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const TransactionItem = ({ transaction }) => {
     >
       <p>{name}</p>
       <div className="flex items-center gap-3">
-        <p className="text-lg font-medium">৳ {amount}</p>
+        <p className="text-lg font-medium">৳ {numberWithCommas(amount)}</p>
 
         <Button
           size="auto"
