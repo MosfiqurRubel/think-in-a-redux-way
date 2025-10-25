@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { editActive } from "@/features/transaction/transactionSlice";
+import {
+  editActive,
+  removeTransaction,
+} from "@/features/transaction/transactionSlice";
 import { SquarePen, Trash } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -9,12 +12,13 @@ const TransactionItem = ({ transaction }) => {
 
   const bgClass = type === "income" ? "bg-primary" : "bg-red-700";
 
-  const handleEdit = (id) => {
+  const handleEdit = () => {
     console.log(id);
     dispatch(editActive(transaction));
   };
-  const handleRemove = (id) => {
+  const handleRemove = () => {
     console.log(id);
+    dispatch(removeTransaction(id));
   };
 
   return (
@@ -29,7 +33,7 @@ const TransactionItem = ({ transaction }) => {
           size="auto"
           variant="iconFlat"
           rounded="full"
-          onClick={() => handleEdit(id)}
+          onClick={handleEdit}
         >
           <SquarePen size={18} />
         </Button>
@@ -37,7 +41,7 @@ const TransactionItem = ({ transaction }) => {
           size="auto"
           variant="iconFlatDanger"
           rounded="full"
-          onClick={() => handleRemove(id)}
+          onClick={handleRemove}
         >
           <Trash size={18} />
         </Button>
