@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import RootLayout from "@/layouts/RootLayout";
 
@@ -9,6 +10,16 @@ import NotFound from "@/components/NotFound";
 function App() {
   return (
     <BrowserRouter>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            borderRadius: "8px",
+            background: "#333",
+            color: "#fff",
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
