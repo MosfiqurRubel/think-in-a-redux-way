@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { createTransaction } from "@/features/transaction/transactionSlice";
+import {
+  createTransaction,
+  changeTransaction,
+  editInActive,
+} from "@/features/transaction/transactionSlice";
 import Checkbox from "@/components/ui/Checkbox";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import { changeTransaction } from "@/features/transaction/transactionSlice";
 
 const TransactionForm = () => {
   const dispatch = useDispatch();
@@ -31,8 +34,14 @@ const TransactionForm = () => {
       setData({ name, type, amount });
     } else {
       setEditMode(false);
-      handleCancel();
+      setData(empty); // ✅ just reset local state, no dispatch here
     }
+
+    if (editMode) {
+      document.querySelector("form")?.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editing]);
 
   const handleChange = (e) => {
@@ -59,8 +68,6 @@ const TransactionForm = () => {
           data: payload,
         })
       );
-      setData(null); // Reset edit mode
-
       setEditMode(false);
     } else {
       dispatch(createTransaction(payload));
@@ -73,6 +80,7 @@ const TransactionForm = () => {
   const handleCancel = () => {
     setData(empty);
     setEditMode(false);
+    dispatch(editInActive()); // ✅ clear global editing state
   };
 
   return (
@@ -154,7 +162,16 @@ const TransactionForm = () => {
           disabled={isLoading}
           type="submit"
           variant="primary"
-          text={editMode ? "Update Transaction" : "Add Transaction"}
+          // text={editMode ? "Update Transaction" : "Add Transaction"}
+          text={
+            isLoading
+              ? editMode
+                ? "Updating..."
+                : "Adding..."
+              : editMode
+              ? "Update Transaction"
+              : "Add Transaction"
+          }
           className="w-full capitalize"
         />
         {editMode && (
@@ -170,6 +187,10 @@ const TransactionForm = () => {
 
       {!isLoading && isError && (
         <p className="text-danger">There was an error occured!</p>
+      )}
+
+      {isError && (
+        <p className="text-danger mt-2">Failed to save transaction.</p>
       )}
     </form>
   );
