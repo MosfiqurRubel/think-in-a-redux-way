@@ -15,7 +15,7 @@ const TransactionList = () => {
   }, [dispatch]);
 
   // decide what to render
-  let content;
+  let content = null;
 
   if (isLoading) content = <Loading />;
   if (!isLoading && isError) content = <Loading loadingText={error} />;
