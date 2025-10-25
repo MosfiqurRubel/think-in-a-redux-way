@@ -74,7 +74,7 @@ body {
 }
 
 @utility input-field {
-  @apply rounded-sm px-2 py-2.5 text-sm w-full border border-border focus:border-primary focus:outline-hidden focus:ring-1 focus:ring-primary;
+  @apply rounded-sm px-2 py-2.5 text-sm w-full text-foreground border border-border focus:border-primary focus:outline-hidden focus:ring-1 focus:ring-primary;
 }
 @utility select-box {
   @apply rounded-lg p-2 w-full bg-white border border-border focus:outline-hidden focus:ring-1 focus:ring-primary;

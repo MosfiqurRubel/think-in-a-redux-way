@@ -1,21 +1,39 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createTransaction } from "@/features/transaction/transactionSlice";
 import Checkbox from "@/components/ui/Checkbox";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import { changeTransaction } from "@/features/transaction/transactionSlice";
 
 const TransactionForm = () => {
   const dispatch = useDispatch();
-  const { isLoading, isError } = useSelector((state) => state.transaction);
+  const { editing, isLoading, isError } = useSelector(
+    (state) => state.transaction
+  );
 
   const empty = {
     name: "",
     type: "",
     amount: "",
   };
+
   const [data, setData] = useState(empty);
+  const [editMode, setEditMode] = useState(false);
+
+  // listen for edit mode active
+  useEffect(() => {
+    const { id, name, type, amount } = editing || {};
+
+    if (id) {
+      setEditMode(true);
+      setData({ name, type, amount });
+    } else {
+      setEditMode(false);
+      handleCancel();
+    }
+  }, [editing]);
 
   const handleChange = (e) => {
     setData({
@@ -24,7 +42,7 @@ const TransactionForm = () => {
     });
   };
 
-  const handleCreate = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     console.log("data --- ", data);
@@ -34,17 +52,37 @@ const TransactionForm = () => {
       amount: Number(data.amount),
     };
 
-    dispatch(createTransaction(payload));
+    if (editMode) {
+      dispatch(
+        changeTransaction({
+          id: editing?.id,
+          data: payload,
+        })
+      );
+      setData(null); // Reset edit mode
 
+      setEditMode(false);
+    } else {
+      dispatch(createTransaction(payload));
+    }
+
+    // reset form
     setData(empty);
+  };
+
+  const handleCancel = () => {
+    setData(empty);
+    setEditMode(false);
   };
 
   return (
     <form
-      onSubmit={handleCreate}
-      className="bg-card p-5 rounded-lg w-[320px] sm:w-[400px] shadow"
+      onSubmit={handleSubmit}
+      className="bg-card p-5 rounded-lg w-full max-w-md shadow"
     >
-      <h3 className="text-lg font-semibold mb-3">Add new transaction</h3>
+      <h3 className="text-lg font-semibold mb-3">
+        {editMode ? "Update" : "Add new"} transaction
+      </h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-[1fr_2fr] gap-3 mb-3">
         <Label text="name" htmlFor="name" required className="self-center" />
@@ -111,24 +149,28 @@ const TransactionForm = () => {
         />
       </div>
 
-      <Button
-        disabled={isLoading}
-        type="submit"
-        variant="primary"
-        text="Add Transaction"
-        className="w-full capitalize"
-      />
+      <div className="flex gap-4">
+        <Button
+          disabled={isLoading}
+          type="submit"
+          variant="primary"
+          text={editMode ? "Update Transaction" : "Add Transaction"}
+          className="w-full capitalize"
+        />
+        {editMode && (
+          <Button
+            disabled={isLoading}
+            variant="danger"
+            text="Cancel Edit"
+            className="w-full capitalize"
+            onClick={handleCancel}
+          />
+        )}
+      </div>
 
       {!isLoading && isError && (
         <p className="text-danger">There was an error occured!</p>
       )}
-
-      {/* <Button
-        type="submit"
-        variant="danger"
-        text="Cancel Edit"
-        className="w-full capitalize"
-      /> */}
     </form>
   );
 };
