@@ -29,7 +29,11 @@ const SearchBar = () => {
 
   return (
     <form onClick={handleSubmit} className="flex items-center">
-      <div className="group relative rounded-md bg-white">
+      <div className="group relative rounded-md bg-background">
+        <SvgIcon
+          name="search"
+          className="absolute left-3 top-1/2 -mt-2.5 text-foreground pointer-events-none group-focus-within:text-primary-500"
+        />
         <Input
           name="search"
           type="search"
@@ -37,11 +41,7 @@ const SearchBar = () => {
           onChange={handleSearch}
           placeholder="Search"
           id="lws-searchBook"
-          className="pe-10 max-w-56 rounded-md"
-        />
-        <SvgIcon
-          name="search"
-          className="absolute right-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-primary"
+          className="ps-10 max-w-56 rounded-md"
         />
       </div>
     </form>

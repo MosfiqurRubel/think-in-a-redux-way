@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Sidebar from "../components/Sidebar";
 
 const RootLayout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,13 +22,13 @@ const RootLayout = () => {
     <>
       <ThemeToggle />
       <Navbar isScrolled={isScrolled} />
-      <main
-        className={cn(
-          "container pt-0 pb-3 2xl:px-6 min-h-full mx-auto",
-          isScrolled && "pt-16.5"
-        )}
-      >
-        <Outlet />
+      <main className="container lg:max-w-360 min-h-screen lg:flex mt-6 max-lg:space-y-10">
+        <Sidebar />
+        <div className="grow">
+          <div className="lg:max-w-3xl rounded-lg mx-auto relative z-20 p-10 xl:max-w-none bg-[#1E293B]">
+            <Outlet />
+          </div>
+        </div>
       </main>
       <Footer />
     </>

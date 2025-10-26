@@ -39,41 +39,41 @@ const Button = ({
 
   const variantColors = {
     primary: {
-      fill: "border border-transparent bg-primary-500 text-white hover:bg-gray-600",
+      fill: "border border-transparent bg-primary-500 text-white hover:bg-primary-600",
       outline:
-        "border border-primary-500 text-primary-500 hover:border-primary-500 hover:text-border",
+        "border border-primary-500 text-primary-500 hover:border-primary-400",
     },
     secondary: {
-      fill: "border border-transparent bg-border text-white hover:bg-gray-600",
+      fill: "border border-transparent bg-secondary-500 text-white hover:bg-secondary-600",
       outline:
-        "border border-primary-500 text-foreground hover:border-primary-500 hover:text-primary-500",
+        "border border-secondary-500 text-secondary-500 hover:border-secondary-400",
     },
     success: {
-      fill: "border border-transparent bg-teal-500 text-white hover:bg-teal-600",
+      fill: "border border-transparent bg-success-500 text-white hover:bg-success-600",
       outline:
-        "border border-teal-500 text-teal-500 hover:border-teal-400 hover:text-teal-400",
+        "border border-success-500 text-success-500 hover:border-success-400",
     },
     danger: {
-      fill: "border border-transparent bg-danger text-white hover:bg-red-600",
+      fill: "border border-transparent bg-danger-500 text-white hover:bg-danger-600",
       outline:
-        "border border-danger text-danger hover:border-red-400 hover:text-red-400",
+        "border border-danger-500 text-danger-500 hover:border-danger-400",
     },
     warning: {
-      fill: "border border-transparent bg-yellow-500 text-white hover:bg-yellow-600",
+      fill: "border border-transparent bg-warning-500 text-white hover:bg-warning-600",
       outline:
-        "border border-yellow-500 text-yellow-500 hover:border-yellow-400",
+        "border border-warning-500 text-warning-500 hover:border-warning-400",
     },
     info: {
-      fill: "bg-sky-600 hover:bg-sky-700 text-white ",
-      outline: "border border-sky-500 text-sky-600 hover:bg-sky-50",
+      fill: "border border-transparent bg-info-500 text-white hover:bg-info-600",
+      outline: "border border-info-500 text-info-500 hover:border-info-400",
     },
     iconFlat: {
-      fill: "text-white hover:bg-transparent hover:text-blue-200",
-      outline: "",
+      fill: "text-white bg-primary-200 hover:text-primary-600",
+      outline: "text-white hover:bg-transparent hover:text-primary-600",
     },
     iconFlatDanger: {
-      fill: "text-white hover:bg-transparent hover:text-danger",
-      outline: "",
+      fill: "text-white bg-danger-200 hover:text-danger-600",
+      outline: "text-white hover:bg-transparent hover:text-danger-600",
     },
     custom: {
       fill: "",

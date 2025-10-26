@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"); */
 @import "tailwindcss";
 
 /*
@@ -190,7 +190,7 @@
 */
 
 @theme {
-  --font-opensans: "Open Sans", sans-serif;
+  /* --font-opensans: "Open Sans", sans-serif; */
 
   --color-background: var(--color-background);
   --color-foreground: var(--color-foreground);
@@ -269,11 +269,11 @@
 }
 
 html {
-  @apply scroll-smooth font-opensans;
+  @apply scroll-smooth;
 }
 
 body {
-  @apply bg-background text-foreground font-opensans transition-colors duration-300;
+  @apply bg-background text-foreground transition-colors duration-300;
 }
 
 * {
@@ -292,8 +292,7 @@ body {
 }
 
 @utility container {
-  margin-inline: auto;
-  padding-inline: 1rem;
+  @apply mx-auto px-4 sm:px-6 md:px-8;
 }
 
 @utility flex-center {
@@ -301,16 +300,23 @@ body {
 }
 
 @utility form-label {
-  @apply block text-base text-secondary-500 font-normal capitalize;
+  @apply block text-base text-foreground font-normal capitalize;
 }
 
 @utility input-field {
-  @apply rounded-sm px-2 py-2.5 text-sm w-full border border-secondary-300 focus:border-primary-500 focus:outline-hidden focus:ring-1 focus:ring-primary-500;
+  @apply rounded-sm px-2 py-2.5 text-sm w-full bg-background text-foreground border border-secondary-300 focus:border-primary-500 focus:outline-hidden focus:ring-1 focus:ring-primary-500;
 }
 @utility select-box {
-  @apply rounded-lg p-2 w-full bg-white border border-secondary-300 focus:outline-hidden focus:ring-1 focus:ring-primary-500;
+  @apply rounded-lg p-2 w-full bg-background border border-secondary-300 focus:border-primary-500 focus:outline-hidden focus:ring-1 focus:ring-primary-500;
 }
 
 #root {
-  @apply max-w-full h-full my-0 mx-auto p-0;
+  @apply max-w-full h-full my-0 mx-auto px-0;
+}
+
+@utility sidebar {
+  @apply shrink-0 lg:w-80 text-sm font-semibold max-lg:flex max-lg:justify-center;
+}
+@utility sub-menu {
+  @apply flex items-center gap-2 font-normal hover:text-white;
 }

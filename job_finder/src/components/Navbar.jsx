@@ -8,8 +8,8 @@ const Navbar = ({ isScrolled }) => {
   return (
     <nav
       className={cn(
-        "w-full z-40 transition-all duration-300 bg-background text-foreground border-b border-secondary-500 py-3.5",
-        isScrolled && "bg-white text-black py-3 fixed"
+        "w-full top-0 z-40 transition-all duration-300 bg-background text-foreground py-4",
+        isScrolled && " bg-background text-foreground py-3.5 fixed"
       )}
     >
       <div className="flex items-center justify-between container">
@@ -17,7 +17,7 @@ const Navbar = ({ isScrolled }) => {
           <img src={logo} className="h-10 object-contain" />
         </Link>
 
-        <ul className="hidden md:flex items-center space-x-6">
+        {/* <ul className="hidden md:flex items-center space-x-6">
           <li className="font-semibold cursor-pointer">
             <NavLink
               to="/"
@@ -27,7 +27,19 @@ const Navbar = ({ isScrolled }) => {
                   : cn("text-foreground", isScrolled && "text-black")
               }
             >
-              Home
+              AllJobs
+            </NavLink>
+          </li>
+          <li className="font-semibold cursor-pointer">
+            <NavLink
+              to="/add-job"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary-500"
+                  : cn("text-foreground", isScrolled && "text-black")
+              }
+            >
+              AddJob
             </NavLink>
           </li>
           <li className="font-semibold cursor-pointer">
@@ -42,7 +54,7 @@ const Navbar = ({ isScrolled }) => {
               Wishlist
             </NavLink>
           </li>
-        </ul>
+        </ul> */}
         <div className="flex gap-x-4">
           <SearchBar />
           <Button variant="primary" text="sign in" className="capitalize" />

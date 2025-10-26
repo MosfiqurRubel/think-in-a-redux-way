@@ -28,34 +28,39 @@ const Badge = ({
 
   const variantColors = {
     primary: {
-      fill: "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-200",
+      fill: "bg-primary-100 text-primary-600 dark:bg-primary-900 dark:text-primary-200",
       outline:
-        "border border-blue-500 text-blue-600 dark:text-blue-300 dark:border-blue-400",
+        "border border-primary-500 text-primary-600 dark:text-primary-300 dark:border-primary-400",
+    },
+    secondary: {
+      fill: "bg-secondary-100 text-secondary-600 dark:bg-secondary-900 dark:text-secondary-200",
+      outline:
+        "border border-secondary-500 text-secondary-600 dark:text-secondary-300 dark:border-secondary-400",
     },
     active: {
-      fill: "bg-blue-600 text-white dark:bg-blue-900 dark:text-blue-200",
+      fill: "bg-primary-600 text-white dark:bg-primary-900 dark:text-primary-200",
       outline:
-        "border border-blue-500 text-blue-600 dark:text-blue-300 dark:border-blue-400",
+        "border border-primary-500 text-primary-600 dark:text-primary-300 dark:border-primary-400",
     },
     success: {
-      fill: "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-200",
+      fill: "bg-success-100 text-success-600 dark:bg-success-900 dark:text-success-200",
       outline:
-        "border border-green-500 text-green-600 dark:text-green-300 dark:border-green-400",
+        "border border-success-500 text-success-600 dark:text-success-300 dark:border-success-400",
     },
     danger: {
-      fill: "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-200",
+      fill: "bg-danger-100 text-danger-600 dark:bg-danger-900 dark:text-danger-200",
       outline:
-        "border border-red-500 text-red-600 dark:text-red-300 dark:border-red-400",
+        "border border-danger-500 text-danger-600 dark:text-danger-300 dark:border-danger-400",
     },
     warning: {
-      fill: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+      fill: "bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-200",
       outline:
-        "border border-yellow-500 text-yellow-600 dark:text-yellow-300 dark:border-yellow-400",
+        "border border-warning-500 text-warning-600 dark:text-warning-300 dark:border-warning-400",
     },
     info: {
-      fill: "bg-sky-100 text-sky-600 dark:bg-sky-900 dark:text-sky-200",
+      fill: "bg-info-100 text-info-600 dark:bg-info-900 dark:text-info-200",
       outline:
-        "border border-sky-500 text-sky-600 dark:text-sky-300 dark:border-sky-400",
+        "border border-info-500 text-info-600 dark:text-info-300 dark:border-info-400",
     },
     custom: {
       fill: "bg-primary/80 text-primary",

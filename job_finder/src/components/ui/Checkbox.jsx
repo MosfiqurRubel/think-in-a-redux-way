@@ -23,13 +23,15 @@ const Checkbox = ({
   };
 
   const colorVariants = {
-    primary: "bg-primary text-gray-800 focus:ring-primary focus:ring-offset-1",
+    primary:
+      "accent-primary-600 text-secondary-800 focus:ring-primary-500 focus:ring-offset-1",
     success:
-      "accent-green-600 text-green-600 focus:ring-green-500 focus:ring-offset-1",
-    danger: "bg-danger text-red-600 focus:ring-red-500 focus:ring-offset-1",
+      "accent-success-600 text-success-600 focus:ring-success-500 focus:ring-offset-1",
+    danger:
+      "accent-danger-600 text-danger-600 focus:ring-danger-500 focus:ring-offset-1",
     warning:
-      "accent-yellow-500 text-yellow-600 focus:ring-yellow-500 focus:ring-offset-1",
-    info: "accent-sky-600 text-sky-600 focus:ring-sky-500 focus:ring-offset-1",
+      "accent-warning-500 text-warning-600 focus:ring-warning-500 focus:ring-offset-1",
+    info: "accent-info-600 text-info-600 focus:ring-info-500 focus:ring-offset-1",
     custom: "",
   };
 
@@ -57,7 +59,7 @@ const Checkbox = ({
       onChange={handleChange}
       required={required}
       disabled={disabled}
-      className={`rounded border-gray-300 transition-all duration-200 ${sizeClasses[size]} ${colorClass} ${cursorClass} ${className}`}
+      className={`rounded border-secondary-300 transition-all duration-200 ${sizeClasses[size]} ${colorClass} ${cursorClass} ${className}`}
     />
   );
 };
