@@ -6,8 +6,8 @@ import initialState from "@/features/initialState";
 export const removeJobThunk = createAsyncThunk(
   "deleteJob/removeJobThunk",
   async (id) => {
-    const job = await deleteJob(id);
-    return job;
+    await deleteJob(id);
+    return id; // ✅ শুধু id রিটার্ন করবো
   }
 );
 
@@ -22,6 +22,7 @@ const deleteJobSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(removeJobThunk.fulfilled, (state, action) => {
+        console.log(action);
         state.isError = false;
         state.isLoading = false;
         state.jobs = state.jobs.filter((j) => j.id !== action.meta.arg);

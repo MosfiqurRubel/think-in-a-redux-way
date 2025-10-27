@@ -1,16 +1,23 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { removeJobThunk } from "@/features/deleteJob/deleteJobSlice";
 import { Calendar, DollarSign, Pencil, Square, Trash } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
 const JobList = ({ job }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id, title, type, salary, deadline } = job || {};
 
   const typeColor = {
-    Internship: "fill-orange-700 stroke-orange-700",
-    "Full Time": "fill-yellow-600 stroke-yellow-600",
-    Remote: "fill-teal-500 stroke-teal-500",
+    internship: "fill-orange-700 stroke-orange-700",
+    full_time: "fill-yellow-600 stroke-yellow-600",
+    remote: "fill-teal-500 stroke-teal-500",
+  };
+
+  const handleDelete = () => {
+    dispatch(removeJobThunk(id));
   };
 
   return (
@@ -19,16 +26,16 @@ const JobList = ({ job }) => {
         <Heading
           level={5}
           fontWeight="semibold"
-          text={title}
-          className="mb-2"
+          text={title.split("_").join(" ")}
+          className="capitalize mb-2"
         />
         <div className="job-footers flex flex-wrap gap-6 text-sm text-slate-300">
-          <div className="flex items-center">
+          <div className="flex items-center capitalize">
             <Square
               size={18}
               className={`mr-1.5 ${typeColor[type]} ${typeColor[type]}`}
             />
-            {type}
+            {type.split("_").join(" ")}
           </div>
           <div className="flex items-center">
             <DollarSign size={18} className="stroke-slate-400 mr-1.5" />
@@ -51,7 +58,12 @@ const JobList = ({ job }) => {
           <Pencil size={16} /> Edit
         </Button>
 
-        <Button size="sm" variant="danger" className="gap-1">
+        <Button
+          onClick={handleDelete}
+          size="sm"
+          variant="danger"
+          className="gap-1"
+        >
           <Trash size={16} className="fill-white" /> Delete
         </Button>
       </div>

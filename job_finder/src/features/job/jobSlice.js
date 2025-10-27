@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getJobs } from "./jobAPI";
 import initialState from "@/features/initialState";
+import { removeJobThunk } from "../deleteJob/deleteJobSlice";
 
 // ✅ Async thunk for fetching all jobs
 export const fetchJobs = createAsyncThunk("job/fetchJobs", async () => {
@@ -28,6 +29,11 @@ const jobSlice = createSlice({
         state.isError = true;
         state.error = action.error?.message;
         state.jobs = [];
+      })
+      .addCase(removeJobThunk.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.jobs = state.jobs.filter((job) => job.id !== action.meta.arg);
       });
   },
 });
