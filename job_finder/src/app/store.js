@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import jobsReducer from "@/features/getJobs/getJobsSlice";
+import jobReducer from "@/features/job/jobSlice";
 import createJobReducer from "@/features/createJob/createJobSlice";
 import updateJobReducer from "@/features/updateJob/updateJobSlice";
 import deleteJobReducer from "@/features/deleteJob/deleteJobSlice";
@@ -7,7 +7,7 @@ import filterReducer from "@/features/filter/filterSlice";
 
 export const store = configureStore({
   reducer: {
-    job: jobsReducer,
+    job: jobReducer,
     create: createJobReducer,
     update: updateJobReducer,
     delete: deleteJobReducer,

@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getJobs } from "./getJobsAPI";
+import { getJobs } from "./jobAPI";
 import initialState from "@/features/initialState";
 
 // ✅ Async thunk for fetching all jobs
-export const fetchJobs = createAsyncThunk("getJobs/fetchJobs", async () => {
+export const fetchJobs = createAsyncThunk("job/fetchJobs", async () => {
   const jobs = await getJobs();
   return jobs;
 });
 
 // create slice
-const getJobsSlice = createSlice({
-  name: "getJobs",
+const jobSlice = createSlice({
+  name: "job",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -32,4 +32,4 @@ const getJobsSlice = createSlice({
   },
 });
 
-export default getJobsSlice.reducer;
+export default jobSlice.reducer;

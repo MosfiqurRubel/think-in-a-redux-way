@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/images/logo.svg";
-import Button from "@/components/ui/Button";
-import SearchBar from "@/components/ui/SearchBar";
+// import Button from "@/components/ui/Button";
+// import SearchBar from "@/components/ui/SearchBar";
 
 const Navbar = ({ isScrolled }) => {
   return (
@@ -12,7 +12,7 @@ const Navbar = ({ isScrolled }) => {
         isScrolled && " bg-background text-foreground py-3.5 fixed"
       )}
     >
-      <div className="flex items-center justify-between container">
+      <div className="flex items-center justify-between container lg:max-w-360">
         <Link to="/">
           <img src={logo} className="h-10 object-contain" />
         </Link>
@@ -56,14 +56,14 @@ const Navbar = ({ isScrolled }) => {
           </li>
         </ul> */}
         <div className="flex gap-x-4">
-          <SearchBar />
+          {/* <SearchBar />
           <Button variant="primary" text="sign in" className="capitalize" />
           <Button
             variant="secondary"
             outline
             text="sign up"
             className="capitalize"
-          />
+          /> */}
         </div>
       </div>
     </nav>

@@ -279,10 +279,6 @@ body {
   @apply bg-background text-foreground transition-colors duration-300;
 }
 
-* {
-  /* @apply border-secondary-300; */
-}
-
 @layer utilities {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
@@ -318,7 +314,7 @@ body {
 }
 
 @utility sidebar {
-  @apply shrink-0 lg:w-80 text-sm font-semibold max-lg:flex max-lg:justify-center;
+  @apply shrink-0 lg:w-80 text-sm font-semibold max-lg:flex max-lg:justify-center px-8;
 }
 @utility sub-menu {
   @apply flex items-center gap-2 font-normal hover:text-white;

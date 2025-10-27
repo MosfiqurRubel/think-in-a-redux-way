@@ -1,4 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { createJobThunk } from "@/features/createJob/createJobSlice";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
@@ -6,6 +8,9 @@ import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 
 const AddJob = () => {
+  const dispatch = useDispatch();
+  const { isLoading, isError } = useSelector((state) => state.create);
+
   const empty = {
     title: "",
     type: "",
@@ -14,18 +19,18 @@ const AddJob = () => {
   };
   const [jobData, setJobData] = useState(empty);
 
-  const jobTitles = [
+  const titleOptions = [
     { label: "Software Engineer", value: "software_engineer" },
     { label: "Software Developer", value: "software_developer" },
-    { label: "Full Stack Developer", value: "full_stackdeveloper" },
-    { label: "DevOps Engineer", value: "devOpsEngineer" },
-    { label: "QA Engineer", value: "qaEngineer" },
+    { label: "Full Stack Developer", value: "full_stack_developer" },
+    { label: "DevOps Engineer", value: "devops_engineer" },
+    { label: "QA Engineer", value: "qa_engineer" },
     { label: "Frontend Developer", value: "frontend_developer" },
     { label: "Frontend Engineer", value: "frontend_engineer" },
   ];
 
-  const jobTypes = [
-    { label: "Full Type", value: "fulltype" },
+  const typeOptions = [
+    { label: "Full Time", value: "full_time" },
     { label: "Internship", value: "internship" },
     { label: "Remote", value: "remote" },
   ];
@@ -47,6 +52,8 @@ const AddJob = () => {
     };
 
     console.log(payload);
+
+    dispatch(createJobThunk(payload));
     setJobData(empty);
   };
 
@@ -59,21 +66,25 @@ const AddJob = () => {
         <div className="md:grid md:grid-cols-[200px_minmax(300px,1fr)]">
           <Label text="Job Title" />
           <Select
+            id="title"
             name="title"
-            options={jobTitles}
+            options={titleOptions}
             value={jobData.title}
             onChange={handleChange}
             placeholder="Select Job"
+            required
           />
         </div>
         <div className="md:grid md:grid-cols-[200px_minmax(300px,1fr)]">
           <Label text="Job Type" />
           <Select
+            id="type"
             name="type"
-            options={jobTypes}
+            options={typeOptions}
             value={jobData.type}
             onChange={handleChange}
             placeholder="Select Job Type"
+            required
           />
         </div>
         <div className="md:grid md:grid-cols-[200px_minmax(300px,1fr)]">
@@ -89,6 +100,7 @@ const AddJob = () => {
               onChange={handleChange}
               placeholder="20,00,000"
               className="ps-15"
+              required
             />
           </div>
         </div>
@@ -100,11 +112,21 @@ const AddJob = () => {
             value={jobData.deadline}
             onChange={handleChange}
             placeholder="mm/dd/yyyy"
+            required
           />
         </div>
 
+        {!isLoading && isError && (
+          <p className="text-danger-500">There was an error occured!</p>
+        )}
+
         <div className="text-right">
-          <Button type="submit" variant="primary" text="Submit" />
+          <Button
+            disabled={isLoading}
+            type="submit"
+            variant="primary"
+            text="Submit"
+          />
         </div>
       </form>
     </>
