@@ -12,7 +12,7 @@ const AddJob = () => {
     salary: "",
     deadline: "",
   };
-  const [data, setJobData] = useState(empty);
+  const [jobData, setJobData] = useState(empty);
 
   const jobTitles = [
     { label: "Software Engineer", value: "software_engineer" },
@@ -31,23 +31,22 @@ const AddJob = () => {
   ];
 
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
     const payload = {
-      ...data,
-      [e.target.name]: e.target.value,
+      ...jobData,
+      [name]: type === "checkbox" ? checked : value,
     };
     setJobData(payload);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const payload = {
-      ...data,
-      [e.target.name]: e.target.value,
+      ...jobData,
+      salary: Number(jobData.salary),
     };
-    setJobData(payload);
 
-    console.log(data);
+    console.log(payload);
     setJobData(empty);
   };
 
@@ -56,13 +55,13 @@ const AddJob = () => {
       <header className="md:flex justify-center mb-10">
         <Heading level={1} fontWeight="extrabold" text="Add New Job" />
       </header>
-      <form onClick={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div className="md:grid md:grid-cols-[200px_minmax(300px,1fr)]">
           <Label text="Job Title" />
           <Select
             name="title"
             options={jobTitles}
-            value={data.title}
+            value={jobData.title}
             onChange={handleChange}
             placeholder="Select Job"
           />
@@ -72,33 +71,40 @@ const AddJob = () => {
           <Select
             name="type"
             options={jobTypes}
-            value={data.type}
+            value={jobData.type}
             onChange={handleChange}
             placeholder="Select Job Type"
           />
         </div>
         <div className="md:grid md:grid-cols-[200px_minmax(300px,1fr)]">
           <Label text="Salary" />
-          <Input
-            name="salary"
-            value={data.salary}
-            onChange={handleChange}
-            placeholder="Salary"
-          />
+          <div className="flex relative">
+            <span className="flex-center bg-card rounded-l-sm absolute top-px left-px bottom-px px-3 text-sm">
+              BDT
+            </span>
+            <Input
+              type="number"
+              name="salary"
+              value={jobData.salary}
+              onChange={handleChange}
+              placeholder="20,00,000"
+              className="ps-15"
+            />
+          </div>
         </div>
         <div className="md:grid md:grid-cols-[200px_minmax(300px,1fr)]">
           <Label text="Deadline" />
           <Input
             type="date"
             name="deadline"
-            value={data.deadline}
+            value={jobData.deadline}
             onChange={handleChange}
             placeholder="mm/dd/yyyy"
           />
         </div>
 
         <div className="text-right">
-          <Button variant="primary" text="Submit" />
+          <Button type="submit" variant="primary" text="Submit" />
         </div>
       </form>
     </>

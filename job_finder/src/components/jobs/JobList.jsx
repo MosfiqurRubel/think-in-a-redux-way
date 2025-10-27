@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Calendar, DollarSign, Pencil, Square, Trash } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
 const JobList = () => {
+  const navigate = useNavigate();
   const jobs = [
     {
       id: 1,
@@ -74,7 +76,11 @@ const JobList = () => {
           </div>
 
           <div className="mt-5 flex lg:mt-0 lg:ml-4 gap-3">
-            <Button variant="primary" className="gap-1">
+            <Button
+              onClick={() => navigate("/edit-job/:1")}
+              variant="primary"
+              className="gap-1"
+            >
               <Pencil size={16} /> Edit
             </Button>
 

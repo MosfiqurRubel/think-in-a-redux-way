@@ -25,7 +25,7 @@ const RootLayout = () => {
       <main className="container lg:max-w-360 min-h-screen lg:flex mt-6 max-lg:space-y-10">
         <Sidebar />
         <div className="grow">
-          <div className="lg:max-w-3xl rounded-lg mx-auto relative z-20 p-10 xl:max-w-none bg-[#1E293B]">
+          <div className="lg:max-w-3xl rounded-lg mx-auto relative z-20 p-10 xl:max-w-none bg-card">
             <Outlet />
           </div>
         </div>
