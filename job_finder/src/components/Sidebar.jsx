@@ -7,13 +7,13 @@ const Sidebar = () => {
       <nav>
         <ul className="space-y-4">
           <li>
-            <a
-              href="#"
+            <Link
+              to="/"
               className="main-menu menu-active flex items-center gap-2 text-[#38BDF8] font-medium"
             >
               <BriefcaseBusiness size={14} />
               <span>All Available Jobs</span>
-            </a>
+            </Link>
             <ul className="space-y-6 lg:space-y-3 ml-6 mt-2">
               <li>
                 <a className="sub-menu" href="#">
