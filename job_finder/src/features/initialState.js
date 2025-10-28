@@ -1,6 +1,6 @@
 const initialState = {
   jobs: [],
-  job: {},
+  editing: {},
   isLoading: false,
   isError: false,
   error: "",

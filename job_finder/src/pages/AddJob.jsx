@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createJobThunk } from "@/features/createJob/createJobSlice";
-import { fetchJobs } from "@/features/job/jobSlice";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";

@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getJobs } from "./jobAPI";
+import { removeJobThunk } from "@/features/deleteJob/deleteJobSlice";
+import { updateJobThunk } from "@/features/updateJob/updateJobSlice";
 import initialState from "@/features/initialState";
-import { removeJobThunk } from "../deleteJob/deleteJobSlice";
 
 // ✅ Async thunk for fetching all jobs
 export const fetchJobs = createAsyncThunk("job/fetchJobs", async () => {
@@ -30,9 +31,17 @@ const jobSlice = createSlice({
         state.error = action.error?.message;
         state.jobs = [];
       })
+      // 🔹 Update Job
+      .addCase(updateJobThunk.fulfilled, (state, action) => {
+        const indexToUpdate = state.jobs.findIndex(
+          (job) => job.id === action.payload.id
+        );
+        if (indexToUpdate !== -1) {
+          state.jobs[indexToUpdate] = action.payload;
+        }
+      })
+      // 🔹 Delete Job
       .addCase(removeJobThunk.fulfilled, (state, action) => {
-        state.isError = false;
-        state.isLoading = false;
         state.jobs = state.jobs.filter((job) => job.id !== action.meta.arg);
       });
   },

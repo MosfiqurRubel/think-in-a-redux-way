@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeJobThunk } from "@/features/deleteJob/deleteJobSlice";
+import { editActive } from "@/features/updateJob/updateJobSlice";
 import { Calendar, DollarSign, Pencil, Square, Trash } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
@@ -20,8 +21,13 @@ const JobList = ({ job }) => {
     dispatch(removeJobThunk(id));
   };
 
+  const handleEdit = () => {
+    dispatch(editActive(job));
+    navigate(`/edit-job/${id}`);
+  };
+
   return (
-    <div className="lws-single-job flex justify-between items-start border-b border-slate-700 pb-4">
+    <div className="lws-single-job flex justify-between items-start border-b border-secondary-200 pb-4">
       <div className="flex-1 min-w-0">
         <Heading
           level={5}
@@ -29,20 +35,22 @@ const JobList = ({ job }) => {
           text={title.split("_").join(" ")}
           className="capitalize mb-2"
         />
-        <div className="job-footers flex flex-wrap gap-6 text-sm text-slate-300">
+        <div className="job-footers flex flex-wrap gap-6 text-sm text-foreground">
           <div className="flex items-center capitalize">
             <Square
               size={18}
-              className={`mr-1.5 ${typeColor[type]} ${typeColor[type]}`}
+              className={`mr-1.5 ${typeColor[type?.toLowerCase()]} ${
+                typeColor[type?.toLowerCase()]
+              }`}
             />
             {type.split("_").join(" ")}
           </div>
           <div className="flex items-center">
-            <DollarSign size={18} className="stroke-slate-400 mr-1.5" />
+            <DollarSign size={18} className="stroke-secondary-400 mr-1.5" />
             {salary}
           </div>
           <div className="flex items-center">
-            <Calendar size={18} className="stroke-slate-400 mr-1.5" />
+            <Calendar size={18} className="stroke-secondary-400 mr-1.5" />
             Closing on {deadline}
           </div>
         </div>
@@ -50,7 +58,7 @@ const JobList = ({ job }) => {
 
       <div className="mt-5 flex lg:mt-0 lg:ml-4 gap-3">
         <Button
-          onClick={() => navigate(`/edit-job/${id}`)}
+          onClick={handleEdit}
           size="sm"
           variant="primary"
           className="gap-1"

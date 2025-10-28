@@ -15,20 +15,23 @@ export const updateJobThunk = createAsyncThunk(
 const updateJobSlice = createSlice({
   name: "updateJob",
   initialState,
+  reducers: {
+    editActive: (state, action) => {
+      state.editing = action.payload;
+    },
+    editInactive: (state) => {
+      state.editing = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(updateJobThunk.pending, (state) => {
         state.isError = false;
         state.isLoading = true;
       })
-      .addCase(updateJobThunk.fulfilled, (state, action) => {
+      .addCase(updateJobThunk.fulfilled, (state) => {
         state.isError = false;
         state.isLoading = false;
-        const indexToUpdate = state.jobs.findIndex(
-          (t) => t.id === action.payload.id
-        );
-
-        state.jobs[indexToUpdate] = action.payload;
       })
       .addCase(updateJobThunk.rejected, (state, action) => {
         state.isLoading = false;
@@ -39,3 +42,4 @@ const updateJobSlice = createSlice({
 });
 
 export default updateJobSlice.reducer;
+export const { editActive, editInactive } = updateJobSlice.actions;

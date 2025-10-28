@@ -9,15 +9,15 @@
     },
     {
       "title": "software_developer",
-      "type": "internship",
-      "salary": 15000,
+      "type": "remote",
+      "salary": 25000,
       "deadline": "2025-10-31",
       "id": 2
     },
     {
-      "title": "full_stack_developer",
-      "type": "remote",
-      "salary": 90000,
+      "title": "qa_engineer",
+      "type": "internship",
+      "salary": 15000,
       "deadline": "2025-10-31",
       "id": 3
     }
