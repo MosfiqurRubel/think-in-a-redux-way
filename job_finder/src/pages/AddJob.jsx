@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createJobThunk } from "@/features/createJob/createJobSlice";
+import { fetchJobs } from "@/features/job/jobSlice";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
@@ -34,6 +35,30 @@ const AddJob = () => {
     { label: "Internship", value: "internship" },
     { label: "Remote", value: "remote" },
   ];
+
+  // const allTitles = jobs.map((job) => job.title);
+  // const uniqueTitles = [...new Set(allTitles)];
+
+  // const uniqueTitleOptions = uniqueTitles.map((title) => ({
+  //   label: title.split("_").join(" "),
+  //   value: title.toLowerCase().replace(/\s+/g, "_"),
+  // }));
+
+  // const uniqueTitleOptions = [
+  //   ...new Map(jobs.map((job) => [job.title, job])).values(),
+  // ];
+
+  // const uniqueTitleOptions = [...new Set(jobs.map((job) => job.title))].map(
+  //   (title) => ({
+  //     label: title
+  //       .split("_")
+  //       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+  //       .join(" "),
+  //     value: title.toLowerCase().replace(/\s+/g, "_"),
+  //   })
+  // );
+  // const uniqueTitleOptions = getUniqueOptions(jobs, "title");
+  // const uniqueTypeOptions = getUniqueOptions(jobs, "type");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

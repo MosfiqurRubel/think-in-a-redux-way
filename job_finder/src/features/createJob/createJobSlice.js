@@ -24,7 +24,8 @@ const createJobSlice = createSlice({
       .addCase(createJobThunk.fulfilled, (state, action) => {
         state.isError = false;
         state.isLoading = false;
-        state.jobs.push(action.payload);
+        // state.jobs.push(action.payload);
+        state.jobs = [...state.jobs, action.payload];
       })
       .addCase(createJobThunk.rejected, (state, action) => {
         state.isLoading = false;
