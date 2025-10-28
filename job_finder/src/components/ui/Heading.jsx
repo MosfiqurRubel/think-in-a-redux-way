@@ -3,7 +3,7 @@ const Heading = ({
   text,
   children,
   align = "left", // left | center | right
-  fontWeight = "font-medium", // font-normal | font-medium | font-semibold | font-bold | font-extrabold
+  fontWeight = "extrabold", // normal | medium | semibold | bold | extrabold
   className = "",
   color = "text-text", // you can override Tailwind color
 }) => {
