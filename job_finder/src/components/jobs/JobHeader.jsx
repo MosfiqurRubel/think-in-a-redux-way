@@ -1,19 +1,19 @@
-import { Search } from "lucide-react";
+import { useDispatch } from "react-redux";
 import Heading from "@/components/ui/Heading";
 import SearchBar from "@/components/ui/SearchBar";
 import Select from "@/components/ui/Select";
-import { useState } from "react";
+import { setSort } from "../../features/filter/filterSlice";
 
-const JobHeader = () => {
-  const [salary, setSalary] = useState("default");
+const JobHeader = ({ sort }) => {
+  const dispatch = useDispatch();
 
   const salaryItems = [
-    { label: "Salary (Low to High)", value: "low" },
-    { label: "Salary (High to Low)", value: "high" },
+    { label: "Salary (Low to High)", value: "asc" },
+    { label: "Salary (High to Low)", value: "desc" },
   ];
 
   const handleSort = (e) => {
-    setSalary(e.target.value);
+    dispatch(setSort(e.target.value));
   };
 
   return (
@@ -23,9 +23,9 @@ const JobHeader = () => {
         <SearchBar />
 
         <Select
-          name="salary"
+          name="sort"
           options={salaryItems}
-          value={salary}
+          value={sort}
           onChange={handleSort}
           placeholder="Default"
           className="max-w-48"

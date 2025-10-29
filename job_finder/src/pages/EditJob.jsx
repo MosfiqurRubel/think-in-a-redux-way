@@ -142,7 +142,7 @@ const EditJob = () => {
             disabled={isLoading}
             type="submit"
             variant="primary"
-            text="Edit"
+            text="Update"
           />
         </div>
       </form>

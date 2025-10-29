@@ -6,7 +6,7 @@ const NavLink = ({
   children,
   label = "Link",
   fontWeight = "medium", // normal | medium | semibold | bold | extrabold
-  activeClass = "text-primary-500 font-semibold cursor-default",
+  activeClass = "text-primary-500 font-semibold",
   inactiveClass = "text-foreground hover:text-primary-500",
   baseClass = "flex items-center gap-2 transition-all duration-300",
   iconSize = 16,

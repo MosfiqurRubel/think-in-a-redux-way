@@ -317,5 +317,5 @@ body {
   @apply shrink-0 lg:w-80 text-sm font-semibold max-lg:flex max-lg:justify-center px-8;
 }
 @utility sub-menu {
-  @apply flex items-center gap-2 font-normal hover:text-white;
+  @apply flex items-center gap-2 font-medium text-foreground hover:text-info-500 transition-all duration-300;
 }

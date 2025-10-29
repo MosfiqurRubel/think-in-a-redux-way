@@ -1,29 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  type: "all", // all | internship | remote | full-time
   search: "",
-  tags: [],
+  sort: "", // asc | desc | none
 };
 
 const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    tagSelected: (state, action) => {
-      state.tags.push(action.payload);
+    setType: (state, action) => {
+      state.type = action.payload;
     },
-    tagRemoved: (state, action) => {
-      const indexToRemove = state.tags.indexOf(action.payload);
-
-      if (indexToRemove !== -1) {
-        state.tags.splice(indexToRemove, 1);
-      }
-    },
-    searched: (state, action) => {
+    setSearch: (state, action) => {
       state.search = action.payload;
+    },
+    setSort: (state, action) => {
+      state.sort = action.payload;
     },
   },
 });
 
 export default filterSlice.reducer;
-export const { tagSelected, tagRemoved, searched } = filterSlice.actions;
+export const { setType, setSearch, setSort } = filterSlice.actions;
