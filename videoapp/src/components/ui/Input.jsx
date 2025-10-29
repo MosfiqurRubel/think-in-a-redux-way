@@ -48,7 +48,7 @@ const Input = ({
       {label && (
         <label
           htmlFor={id || name}
-          className={`font-medium ${
+          className={`text-sm font-medium ${
             error
               ? "text-red-600"
               : success

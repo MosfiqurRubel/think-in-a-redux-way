@@ -8,35 +8,35 @@ export default function Form() {
         <div className="px-4 py-5 bg-white sm:p-6">
           <div className="grid grid-cols-6 gap-6">
             <div className="col-span-6 sm:col-span-3">
-              <Input title="Video Title" />
+              <Input label="Video Title" />
             </div>
 
             <div className="col-span-6 sm:col-span-3">
-              <Input title="Author" />
+              <Input label="Author" />
             </div>
 
             <div className="col-span-6">
-              <Textarea title="Description" />
+              <Textarea label="Description" />
             </div>
 
             <div className="col-span-6">
-              <Input title="YouTube Video link" />
+              <Input label="YouTube Video link" />
             </div>
 
             <div className="col-span-6">
-              <Input title="Thumbnail link" />
+              <Input label="Thumbnail link" />
             </div>
 
             <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-              <Input title="Upload Date" />
+              <Input label="Upload Date" />
             </div>
 
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <Input title="Video Duration" />
+              <Input label="Video Duration" />
             </div>
 
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <Input title="Video no of views" />
+              <Input label="Video no of views" />
             </div>
           </div>
         </div>
