@@ -1,0 +1,136 @@
+import { CheckCircle, AlertCircle } from "lucide-react";
+
+const Input = ({
+  id,
+  name,
+  label,
+  type = "text",
+  placeholder = "",
+  min,
+  max,
+  required = false,
+  value,
+  disabled = false,
+  className = "",
+  inputClass = "",
+  onChange,
+  error = "",
+  success = "",
+}) => {
+  // ✅ unified handleChange
+  const handleChange = (e) => {
+    if (disabled) return;
+
+    onChange?.({
+      target: {
+        name: name,
+        value: e.target.value,
+      },
+    });
+  };
+
+  // ✅ Dynamic border & text color based on validation
+  const borderClass = error
+    ? "border-red-500 focus:ring-red-500"
+    : success
+    ? "border-emerald-500 focus:ring-emerald-500"
+    : "border-gray-300 focus:ring-sky-400";
+
+  const icon = error ? (
+    <AlertCircle className="text-red-500 w-5 h-5" />
+  ) : success ? (
+    <CheckCircle className="text-emerald-500 w-5 h-5" />
+  ) : null;
+
+  return (
+    <div className={`flex flex-col gap-1 ${className}`}>
+      {/* ✅ Label */}
+      {label && (
+        <label
+          htmlFor={id || name}
+          className={`font-medium ${
+            error
+              ? "text-red-600"
+              : success
+              ? "text-emerald-600"
+              : "text-gray-700"
+          }`}
+        >
+          {label} {required && <span className="text-red-500">*</span>}
+        </label>
+      )}
+
+      {/* ✅ Input Field with Icon */}
+      <div className="relative">
+        <input
+          id={id}
+          name={name}
+          type={type}
+          min={min}
+          max={max}
+          placeholder={placeholder}
+          required={required}
+          disabled={disabled}
+          value={value}
+          onChange={handleChange}
+          className={`input-field ${borderClass} ${inputClass}`}
+        />
+
+        {/* ✅ Validation Icon (right side) */}
+        {icon && <span className="absolute right-3 top-2.5">{icon}</span>}
+      </div>
+
+      {/* ✅ Validation Message */}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {!error && success && (
+        <p className="text-emerald-500 text-sm">{success}</p>
+      )}
+    </div>
+  );
+};
+
+export default Input;
+
+// const Input = ({
+//   id,
+//   name,
+//   type = "text",
+//   placeholder = "",
+//   min,
+//   max,
+//   required = false,
+//   value,
+//   disabled = false,
+//   className = "",
+//   onChange,
+// }) => {
+//   // ✅ একদম unified handleChange
+//   const handleChange = (e) => {
+//     if (disabled) return;
+
+//     onChange?.({
+//       target: {
+//         name: name,
+//         value: e.target.value,
+//       },
+//     });
+//   };
+
+//   return (
+//     <input
+//       id={id}
+//       name={name}
+//       type={type}
+//       min={min}
+//       max={max}
+//       placeholder={placeholder}
+//       required={required}
+//       disabled={disabled}
+//       value={value}
+//       onChange={handleChange}
+//       className={`input-field ${className}`}
+//     />
+//   );
+// };
+
+// export default Input;
