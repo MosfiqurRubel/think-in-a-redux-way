@@ -2,7 +2,7 @@ import Form from "./Form";
 
 const EditVideo = () => {
   return (
-    <div className="max-w-7xl mx-auto px-5 lg:px-0">
+    <div className="max-w-7xl mx-auto">
       <div className="w-full">
         <div className="px-4 sm:px-0 pb-4">
           <h3 className="text-lg font-medium leading-6 text-gray-900">

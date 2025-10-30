@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { apiSlice } from "@/features/api/apiSlice";
 // import videosReducer from "@/features/videos/videosSlice";
 // import videoReducer from "@/features/video/videoSlice";
 // import tagsReducer from "@/features/tags/tagsSlice";
@@ -7,6 +8,9 @@ import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
+    // middleware: (getDefaultMiddleware) =>
+    //   getDefaultMiddleware().concat(apiSlice.middleware),
     // videos: videosReducer,
     // tags: tagsReducer,
     // video: videoReducer,
