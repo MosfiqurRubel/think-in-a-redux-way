@@ -1,20 +1,24 @@
-import { Loader2 } from "lucide-react"; // for spinner icon
+import { Loader2 } from "lucide-react";
 
 const Button = ({
-  children, // ✅ now supports <Button>Anything</Button>
-  text, // optional, still works
-  variant, // primary | success | danger | warning | info | custom
+  children,
+  text,
+  variant,
   outline = false,
   size = "md", // sm | md | lg | auto (for icon-only)
   rounded = "md", // none | sm | md | lg | full
-  hoverEffect, // shadow | ring | none
+  hoverEffect = "none", // shadow | ring | none
   id,
   className = "",
   icon: Icon, // optional icon
   iconPosition = "left", // left | right
+  iconSize = 16, // ✅ dynamic
+  iconColor, // ✅ dynamic
+  iconStroke = 2, // ✅ dynamic
+  iconClass = "", // ✅ dynamic
   onClick,
   disabled = false,
-  loading = false, // ✅ new loading state
+  loading = false,
   type = "button",
   animate = "none", // none | scale | gradient | ripple
   ...rest
@@ -67,18 +71,7 @@ const Button = ({
       fill: "border border-transparent bg-info-500 text-white hover:bg-info-600",
       outline: "border border-info-500 text-info-500 hover:border-info-400",
     },
-    iconFlat: {
-      fill: "text-white bg-primary-200 hover:text-primary-600",
-      outline: "text-white hover:bg-transparent hover:text-primary-600",
-    },
-    iconFlatDanger: {
-      fill: "text-white bg-danger-200 hover:text-danger-600",
-      outline: "text-white hover:bg-transparent hover:text-danger-600",
-    },
-    custom: {
-      fill: "",
-      outline: "",
-    },
+    custom: { fill: "", outline: "" },
   };
 
   const selectedVariant = variantColors[variant] || variantColors["custom"];
@@ -90,7 +83,6 @@ const Button = ({
     ring: "hover:ring-2 hover:ring-offset-2 hover:ring-primary-500/50",
   };
 
-  // ✅ animation styles
   const animationClasses = {
     none: "",
     scale: "hover:scale-105 active:scale-95",
@@ -100,11 +92,9 @@ const Button = ({
       "after:content-[''] after:absolute after:rounded-full after:scale-0 hover:after:scale-150 after:opacity-0 hover:after:opacity-10 after:bg-white after:duration-700 after:w-full after:h-full",
   };
 
-  // ✅ Detect if the button only contains an icon (no text/children)
   const isIconOnly = !!Icon && !children && !text;
   const finalSize = isIconOnly ? "icon" : size;
 
-  // ✅ Dynamic cursor pointer logic
   const cursorClass =
     disabled || loading ? "cursor-not-allowed opacity-60" : "cursor-pointer";
 
@@ -115,15 +105,29 @@ const Button = ({
       disabled={disabled || loading}
       className={`${baseStyle} ${sizeClasses[finalSize]} ${roundedClasses[rounded]} ${colorClasses} ${hoverEffects[hoverEffect]} ${animationClasses[animate]} ${cursorClass} ${className}`}
       id={id}
-      {...rest} // ✅ this passes any extra props safely
+      {...rest}
     >
       {loading ? (
         <Loader2 className="w-4 h-4 animate-spin" />
       ) : (
         <>
-          {Icon && iconPosition === "left" && <Icon className="w-4 h-4" />}
+          {Icon && iconPosition === "left" && (
+            <Icon
+              size={iconSize}
+              color={iconColor}
+              strokeWidth={iconStroke}
+              className={iconClass}
+            />
+          )}
           {children || text}
-          {Icon && iconPosition === "right" && <Icon className="w-4 h-4" />}
+          {Icon && iconPosition === "right" && (
+            <Icon
+              size={iconSize}
+              color={iconColor}
+              strokeWidth={iconStroke}
+              className={iconClass}
+            />
+          )}
         </>
       )}
     </button>
