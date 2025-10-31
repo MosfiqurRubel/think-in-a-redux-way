@@ -4,7 +4,7 @@ import NavLink from "@/components/ui/NavLink";
 import Button from "@/components/ui/Button";
 
 const Description = ({ video }) => {
-  const { id, title, description, date, link } = video || {};
+  const { id, title, description, date } = video || {};
 
   return (
     <div>
