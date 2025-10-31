@@ -5,7 +5,7 @@ import Description from "@/components/video/Description";
 import RelatedVideos from "@/components/video/related/RelatedVideos";
 import PlayerLoader from "@/components/ui/loaders/PlayerLoader";
 import DescriptionLoader from "@/components/ui/loaders/DescriptionLoader";
-import Error from "@/components/ui/loaders/Error";
+import Error from "@/components/ui/Error";
 import RelatedVideoLoader from "@/components/ui/loaders/RelatedVideoLoader";
 
 const Video = () => {

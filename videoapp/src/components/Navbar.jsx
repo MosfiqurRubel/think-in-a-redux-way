@@ -1,9 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, useMatch, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/images/logo.svg";
-// import SearchBar from "@/components/ui/SearchBar";
+import Button from "@/components/ui/Button";
 
 const Navbar = ({ isScrolled }) => {
+  const navigate = useNavigate();
+  const match = useMatch("/videos/add");
+
   return (
     <nav
       className={cn(
@@ -15,14 +18,14 @@ const Navbar = ({ isScrolled }) => {
         <Link to="/">
           <img src={logo} className="h-10 object-contain" />
         </Link>
-        <Link
-          to="/videos/add"
-          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500"
-        >
-          Add Video
-        </Link>
 
-        {/* <SearchBar /> */}
+        {!match && (
+          <Button
+            variant="primary"
+            text="Add Video"
+            onClick={() => navigate("/videos/add")}
+          />
+        )}
       </div>
     </nav>
   );

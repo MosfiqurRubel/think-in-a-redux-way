@@ -1,6 +1,6 @@
 import { useGetVideosQuery } from "@/features/api/apiSlice";
 import VideoLoader from "@/components/ui/loaders/VideoLoader";
-import Error from "@/components/ui/loaders/Error";
+import Error from "@/components/ui/Error";
 import Video from "./Video";
 
 const Videos = () => {

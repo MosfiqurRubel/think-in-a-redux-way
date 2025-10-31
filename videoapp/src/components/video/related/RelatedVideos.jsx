@@ -1,7 +1,7 @@
 import { useGetRelatedVideosQuery } from "@/features/api/apiSlice";
 import RelatedVideo from "./RelatedVideo";
 import RelatedVideoLoader from "@/components/ui/loaders/RelatedVideoLoader";
-import Error from "@/components/ui/loaders/Error";
+import Error from "@/components/ui/Error";
 
 const RelatedVideos = ({ id, title }) => {
   const {

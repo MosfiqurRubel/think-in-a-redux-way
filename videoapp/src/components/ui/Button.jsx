@@ -28,9 +28,9 @@ const Button = ({
 
   const sizeClasses = {
     auto: "gap-1",
-    sm: "text-sm px-3 py-1.5",
-    md: "text-base px-4 py-2",
-    lg: "text-base px-5 py-2.5",
+    sm: "text-xs px-3 py-1.5",
+    md: "text-sm px-4 py-2",
+    lg: "text-base px-5 py-2",
   };
 
   const roundedClasses = {
@@ -43,9 +43,9 @@ const Button = ({
 
   const variantColors = {
     primary: {
-      fill: "border border-transparent bg-primary-500 text-white hover:bg-primary-600",
+      fill: "border border-transparent bg-primary-600 text-white hover:bg-primary-700",
       outline:
-        "border border-primary-500 text-primary-500 hover:border-primary-400",
+        "border border-primary-600 text-primary-600 hover:border-primary-700",
     },
     secondary: {
       fill: "border border-transparent bg-secondary-500 text-white hover:bg-secondary-600",
