@@ -22,31 +22,24 @@ const Form = () => {
   const [videoData, setVideoData] = useState(empty);
 
   const handleChange = (e) => {
-    const {
-      title,
-      author,
-      description,
-      link,
-      thumbnail,
-      date,
-      duration,
-      views,
-    } = e.target;
+    const { name, value } = e.target;
 
     const payload = {
       ...videoData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     };
     setVideoData(payload);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const payload = {
       ...videoData,
       duration: Number(videoData.duration),
       views: Number(videoData.views),
     };
+
     console.log(payload);
 
     addVideo(payload);
@@ -129,7 +122,12 @@ const Form = () => {
           </div>
         </div>
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <Button type="submit" variant="primary" text="Save" />
+          <Button
+            disabled={isLoading}
+            type="submit"
+            variant="primary"
+            text="Save"
+          />
         </div>
 
         {isSuccess && <Success message="Video was added successfully" />}

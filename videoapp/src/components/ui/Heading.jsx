@@ -5,7 +5,7 @@ const Heading = ({
   align = "left", // left | center | right
   fontWeight = "extrabold", // normal | medium | semibold | bold | extrabold
   className = "",
-  color = "text-text", // you can override Tailwind color
+  color = "text-foreground", // you can override Tailwind color
 }) => {
   // ✅ pick the tag dynamically
   const Tag = `h${level}`;

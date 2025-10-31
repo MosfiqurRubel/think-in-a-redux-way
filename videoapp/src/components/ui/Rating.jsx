@@ -11,8 +11,8 @@ const Rating = ({ rating, totalStars = 5 }) => {
             name="star"
             className={`w-4 h-4 ${
               index < rating
-                ? "text-yellow-400 hover:text-yellow-500"
-                : "text-gray-300"
+                ? "text-warning-400 hover:text-warning-500"
+                : "text-secondary-300"
             }`}
           />
         ))}
