@@ -1,10 +1,25 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDeleteVideoMutation } from "@/features/api/apiSlice";
 import { Pencil, Trash } from "lucide-react";
 import Heading from "@/components/ui/Heading";
 import NavLink from "@/components/ui/NavLink";
 import Button from "@/components/ui/Button";
+import Error from "@/components/ui/Error";
 
 const Description = ({ video }) => {
   const { id, title, description, date } = video || {};
+  const navigate = useNavigate();
+  const [deleteVideo, { isLoading, isSuccess, isError }] =
+    useDeleteVideoMutation();
+
+  useEffect(() => {
+    if (isSuccess) navigate("/");
+  }, [isSuccess, navigate]);
+
+  const handleDelete = () => {
+    if (id) deleteVideo(id);
+  };
 
   return (
     <div>
@@ -26,11 +41,13 @@ const Description = ({ video }) => {
             text="Delete"
             icon={Trash}
             className="bg-transparent text-foreground hover:text-danger-600 text-[14px]"
+            onClick={handleDelete}
           />
         </div>
       </div>
 
       <div className="mt-4 text-sm text-secondary-400">{description}</div>
+      {!isLoading && isError && <Error />}
     </div>
   );
 };

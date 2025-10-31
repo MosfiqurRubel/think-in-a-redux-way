@@ -98,28 +98,6 @@
       "duration": 33,
       "views": 3,
       "id": 9
-    },
-    {
-      "title": "fasdf",
-      "author": "sfd",
-      "description": "dsf",
-      "link": "http://example.com/link/to/document",
-      "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
-      "date": "2025-10-31",
-      "duration": 33,
-      "views": 45,
-      "id": 10
-    },
-    {
-      "title": "fdsf",
-      "author": "fdsaf",
-      "description": "fdsafds",
-      "link": "http://example.com/link/to/document",
-      "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
-      "date": "2025-11-21",
-      "duration": 55,
-      "views": 44.4,
-      "id": 11
     }
   ]
 }
