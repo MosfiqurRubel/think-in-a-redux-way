@@ -1,16 +1,7 @@
-import { useState } from "react";
-import BookForm from "@/components/BookForm";
-import BookList from "@/components/BookList";
+import Books from "@/components/books/Books";
 
 const Home = () => {
-  const [editBook, setEditBook] = useState(null);
-
-  return (
-    <>
-      <BookList setEditBook={setEditBook} />
-      <BookForm editBook={editBook} setEditBook={setEditBook} />
-    </>
-  );
+  return <Books />;
 };
 
 export default Home;

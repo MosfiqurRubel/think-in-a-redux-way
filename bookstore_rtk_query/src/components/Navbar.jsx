@@ -21,7 +21,7 @@ const Navbar = ({ isScrolled }) => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "text-primary-500" : "text-foreground"
+                isActive ? "text-primary-500" : "text-secondary-600"
               }
             >
               Book Store
@@ -31,7 +31,7 @@ const Navbar = ({ isScrolled }) => {
             <NavLink
               to="/books/add"
               className={({ isActive }) =>
-                isActive ? "text-primary-500" : "text-foreground"
+                isActive ? "text-primary-500" : "text-secondary-600"
               }
             >
               Add Book
