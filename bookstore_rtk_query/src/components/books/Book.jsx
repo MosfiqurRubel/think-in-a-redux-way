@@ -4,17 +4,15 @@ import Badge from "@/components/ui/Badge";
 import Rating from "@/components/ui/Rating";
 import Heading from "@/components/ui/Heading";
 
-const Book = () => {
+const Book = ({ book }) => {
+  const { id, name, author, thumbnail, price, rating, featured } = book || {};
+
   return (
     <div className="book-card duration-300 hover:scale-105">
-      <img
-        className="h-60 w-[170px] object-cover"
-        src="https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg"
-        alt=""
-      />
+      <img className="h-60 w-[170px] object-cover" src={thumbnail} alt={name} />
       <div className="flex-1 h-full pr-2 pt-2 flex flex-col">
         <div className="flex items-center">
-          <Badge text="featured" size="sm" rounded="sm" outline />
+          {featured && <Badge text="featured" size="sm" rounded="sm" outline />}
           <div className="grow"></div>
           <div className="text-secondary-500 space-x-3">
             <Button size="auto">
@@ -33,15 +31,10 @@ const Book = () => {
         </div>
 
         <div className="space-y-2 mt-4 h-full">
-          <Heading
-            level={5}
-            font
-            text="Slow Horses (Deluxe Edition)"
-            className="mb-2"
-          />
-          <p className="lws-author text-black">Mick Herron</p>
-          <Rating rating={5} />
-          <p className="lws-price">BDT 14</p>
+          <Heading level={5} font text={name} className="mb-2" />
+          <p className="lws-author text-black">{author}</p>
+          <Rating rating={rating} />
+          <p className="lws-price">BDT {price}</p>
         </div>
       </div>
     </div>
