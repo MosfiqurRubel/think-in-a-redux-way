@@ -8,8 +8,16 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     getBooks: builder.query({
       query: () => "/books",
+      keepUnusedDataFor: 600,
+    }),
+    addBook: builder.mutation({
+      query: (newBook) => ({
+        url: "/books",
+        method: "POST",
+        body: newBook,
+      }),
     }),
   }),
 });
 
-export const { useGetBooksQuery } = apiSlice;
+export const { useGetBooksQuery, useAddBookMutation } = apiSlice;
