@@ -116,8 +116,8 @@ const Form = ({ book }) => {
         />
       </form>
 
-      {isSuccess && <Success message="Book was edited successfully" />}
-      {isError && <Error message="There was an error editing book" />}
+      {isSuccess && <Success message="Book updated successfully!" />}
+      {isError && <Error message="Error updating book!" />}
     </>
   );
 };
