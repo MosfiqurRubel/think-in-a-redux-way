@@ -24,7 +24,7 @@ const RootLayout = () => {
       <main
         className={cn(
           "pt-32 pb-3 container min-h-full mx-auto",
-          isScrolled && "pt-[142px]"
+          isScrolled && "pt-[137px]"
         )}
       >
         <Outlet />
