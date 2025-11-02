@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import logo from "@/assets/images/logo.svg";
 import SearchBar from "@/components/SearchBar";
 
-const Navbar = ({ isScrolled }) => {
+const Navbar = ({ isScrolled, search, setSearch }) => {
   return (
     <nav
       className={cn(
@@ -13,7 +13,7 @@ const Navbar = ({ isScrolled }) => {
     >
       <div className="container flex items-center justify-between">
         <Link to="/">
-          <img src={logo} width="150px" className="object-contain" />
+          <img src={logo} alt="LWS" width="150px" className="object-contain" />
         </Link>
 
         <ul className="hidden md:flex items-center space-x-6">
@@ -39,7 +39,7 @@ const Navbar = ({ isScrolled }) => {
           </li>
         </ul>
 
-        <SearchBar />
+        <SearchBar search={search} setSearch={setSearch} />
       </div>
     </nav>
   );

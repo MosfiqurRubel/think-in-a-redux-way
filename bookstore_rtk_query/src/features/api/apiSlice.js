@@ -5,7 +5,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:9000",
   }),
-  tagTypes: ["Books", "Video"],
+  tagTypes: ["Books", "Book"],
   endpoints: (builder) => ({
     getBooks: builder.query({
       query: () => "/books",
