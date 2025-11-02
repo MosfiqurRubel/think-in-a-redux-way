@@ -1,31 +1,33 @@
-## 🛒 Book Store App (React + Redux + Thunk + Tailwind CSS)
+## 📚 Book Store App (React + Redux Toolkit + RTK Query + Tailwind CSS)
 
-Manage Book Store is a CRUD web application built with React, Redux, and Tailwind CSS, designed to manage book collections efficiently.
-Users can add, update, delete, search, and filter books easily — all while maintaining a clean and responsive UI.
+Book Store App is a full-featured CRUD web application built with React, Redux Toolkit, and RTK Query.
+It allows users to add, edit, delete, search, and filter books easily while communicating with a backend API — all inside a clean, responsive UI.
 
 ---
 
 ## 🔑 Key Features
 
-- ➕ Add new books with title, author, price, rating, and image.
-- ✏️ Edit and update existing book details.
-- ❌ Delete books instantly from the list.
-- 🔍 Search books by title or author.
-- 🌟 Filter books by “All” or “Featured” category.
-- 💾 State management handled using Redux for predictable updates.
-- ⚙️ Future-ready for Redux Thunk integration to handle asynchronous API operations.
+- ➕ Add Book: Add new books with title, author, price, rating, and featured status.
+- ✏️ Edit Book: Update book information; form gets prefilled automatically.
+- ❌ Delete Book: Remove books instantly — both from the UI and the server.
+- 🔍 Search Book: Search books by title, author, or price in real-time.
+- 🌟 Filter Books: Filter by “All” or “Featured” category (client-side).
+- ⚡ Data Fetching: Uses RTK Query for efficient API calls and caching.
+- 🧠 State Management: Powered by Redux Toolkit for predictable state updates.
+- 🖌️ UI/UX: Fully responsive layout using Tailwind CSS v4.
 
 ---
 
 ## 🧩 Tech Stack
 
-| Category             | Tools                                       |
-| -------------------- | ------------------------------------------- |
-| **Frontend**         | React (Vite)                                |
-| **State Management** | Redux React-Redux Redux-Thunk (createStore) |
-| **Styling**          | Tailwind CSS v4                             |
-| **Icons**            | Lucide React                                |
-| **JSON Server**      | Mock backend for API testing                |
+| Category             | Tools                         |
+| -------------------- | ----------------------------- |
+| **Frontend**         | React (Vite)                  |
+| **State Management** | Redux Toolkit                 |
+| **API Handling**     | RTK Query                     |
+| **Styling**          | Tailwind CSS v4               |
+| **Icons**            | Lucide React                  |
+| **JSON Server**      | JSON Server for fake REST API |
 
 ## Redux devtools
 
@@ -33,31 +35,32 @@ Users can add, update, delete, search, and filter books easily — all while mai
 
 ## ⚙️ Installation & Setup
 
-- Clone or fork the repo `git@github.com:MosfiqurRubel/book_store_redux_thunk.git`
+- Clone or fork the repo `git@github.com:MosfiqurRubel/book_store_rtk_query.git`
 - Install dependencies using `npm install` or `yarn install`
 - Run it using `npm run dev` or `yarn dev`
 
 The app will be available on `http://localhost:5173` by default.
 
-## এসাইনমেন্ট এ আপনাকে যা যা করতে হবেঃ
-
-✓ ডান পাশে দেয়া ফর্ম এ, যাবতীয় তথ্য ইনপুট দিয়ে সাবমিট করলে, সেটি asynchronously লোকাল সার্ভারে গিয়ে Store হবে।
-
-✓ "Book List" - সেকশনে সার্ভার থেকে বই এর লিস্ট গুলো নিয়ে এসে দেখাতে হবে।
-
-✓ "Book List" - এর ডানে "All, Featured নামে দুটি ট্যাগ আছে, Featured সিলেক্ট করলে 'Featured' বই গুলো শুধু ফিল্টার করে দেখাবে। All দিলে সব গুলোই দেখাবে।
-
-✓ নেভিগেশন মেনুতে "Search Bar" - আছে, সেখানে সার্চ করলে, শুধু মাত্র বই এর নাম দিয়ে সার্চ করবে, এবং সার্চ রেজাল্ট "Book List" সেকশনেই ফিল্টার হয়ে দেখাবে। সার্চ বার ফাঁকা থাকলে, স্বাভাবিক ভাবে যেমন সব বই গুলো দেখায়, সেভাবেই দেখাবে।
-
-✓ কার্ড আইটেমের Edit আইকনে ক্লিক করলে, কার্ডের সব তথ্য ডান পাশের "Add New Book" ফর্মে চলে যাবে। বাটনের নাম তখন "Add Book" থেকে "Update Book" এ কনভার্ট হবে।
-
-✓ "Update Book" এ ক্লিক করলে, প্রোডাক্ট আপডেট হয়ে যাবে, ফর্ম Reset হয়ে যাবে, এবং বাটনের আগের title মানে "Add Book" চলে আসবে।
-
-✓ সব শেষে ডিলিট বাটন ক্লিক করলে, বই টি ডেটাবেজ থেকে ডিলিট হয়ে যাবে।
+Default API endpoint: http://localhost:9000/books
 
 ---
 
-## এই এসাইনমেন্ট এ যা যা করতে হবেঃ
+## 🧠 How It Works
+
+- Page Load: Fetches all books from the server using useGetBooksQuery().
+- Add Book: Submits new book data via useAddBookMutation(), updates list automatically.
+- Edit Book:
+  - Clicking the ✏️ edit icon navigates to /books/edit/:id.
+  - Form is pre-filled using useGetBookQuery(bookId).
+  - On submit, updates the book via useEditBookMutation() and redirects to Home.
+- Delete Book: Instantly removes the book using useDeleteBookMutation() and updates the list.
+- Search & Filter:
+  - Search works client-side (filters by title, author, or price).
+  - Filter toggles between “All” and “Featured” books.
+
+---
+
+## 🧾এই এসাইনমেন্ট এ যা যা করতে হবেঃ
 
 এসাইনমেন্ট 4 এ যা যা করা হয়েছিলো, ঠিক সেগুলোই করতে হবে। তবে এখানে RTK Query ব্যবহার করে API কল করে করতে হবে।
 
