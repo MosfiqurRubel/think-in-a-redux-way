@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAddBookMutation } from "@/features/api/apiSlice";
 import Button from "@/components/ui/Button";
 import Label from "@/components/ui/Label";
 import Input from "@/components/ui/Input";
 import Checkbox from "@/components/ui/Checkbox";
+import Success from "@/components/ui/Success";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -19,6 +20,10 @@ const Form = () => {
     rating: "",
     featured: false,
   };
+
+  useEffect(() => {
+    if (isSuccess) navigate("/");
+  }, [isSuccess, navigate]);
 
   const [bookData, setBookData] = useState(empty);
 
@@ -46,7 +51,6 @@ const Form = () => {
     addBook(payload);
 
     setBookData(empty);
-    navigate("/");
   };
   return (
     <>

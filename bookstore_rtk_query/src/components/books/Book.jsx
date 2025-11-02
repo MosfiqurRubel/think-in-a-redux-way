@@ -1,19 +1,24 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDeleteBookMutation } from "@/features/api/apiSlice";
 import Button from "@/components/ui/Button";
 import SvgIcon from "@/components/ui/SvgIcon";
 import Badge from "@/components/ui/Badge";
 import Rating from "@/components/ui/Rating";
 import Heading from "@/components/ui/Heading";
-import { Pencil } from "lucide-react";
+import Error from "@/components/ui/Error";
 
 const Book = ({ book }) => {
   const navigate = useNavigate();
   const { id, name, author, thumbnail, price, rating, featured } = book || {};
 
+  const [deleteBook, { isLoading, isError }] = useDeleteBookMutation();
+
   const handleEdit = () => {
-    // to={`/videos/${id}`}
-    // to={`/videos/edit/${id}`}
     navigate(`/books/edit/${id}`);
+  };
+
+  const handleDelete = () => {
+    if (id) deleteBook(id);
   };
 
   return (
@@ -24,13 +29,13 @@ const Book = ({ book }) => {
           {featured && <Badge text="featured" size="sm" rounded="sm" outline />}
           <div className="grow"></div>
           <div className="text-secondary-500 space-x-3">
-            <Button onClick={handleEdit} size="auto">
+            <Button size="auto" onClick={handleEdit}>
               <SvgIcon
                 name="edit"
                 className="fill-none hover:text-primary-600"
               />
             </Button>
-            <Button size="auto">
+            <Button size="auto" onClick={handleDelete}>
               <SvgIcon
                 name="delete"
                 className="fill-none hover:text-danger-500"
@@ -46,6 +51,8 @@ const Book = ({ book }) => {
           <p className="lws-price">BDT {price}</p>
         </div>
       </div>
+
+      {!isLoading && isError && <Error message="Error deleting book!" />}
     </div>
   );
 };

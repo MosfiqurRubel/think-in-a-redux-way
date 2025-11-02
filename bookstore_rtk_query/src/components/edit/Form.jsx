@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEditBookMutation } from "@/features/api/apiSlice";
 import Button from "@/components/ui/Button";
@@ -22,6 +22,10 @@ const Form = ({ book }) => {
     featured,
   });
 
+  useEffect(() => {
+    if (isSuccess) navigate("/");
+  }, [isSuccess, navigate]);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -44,7 +48,6 @@ const Form = ({ book }) => {
     };
 
     editBook({ id, data: payload });
-    navigate("/");
   };
   return (
     <>
