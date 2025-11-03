@@ -1,0 +1,76 @@
+{
+  "books": [
+    {
+      "name": "Slow Horses (Deluxe Edition)",
+      "author": "Mick Herron",
+      "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
+      "price": 14,
+      "rating": 3,
+      "featured": false,
+      "id": 1
+    },
+    {
+      "name": "The Last Thing He Told Me: A Novel",
+      "author": "Laura Dave",
+      "thumbnail": "https://m.media-amazon.com/images/P/1501171348.01._SCLZZZZZZZ_SX500_.jpg",
+      "price": 13.99,
+      "rating": 4,
+      "featured": false,
+      "id": 2
+    },
+    {
+      "name": "Eloquent JavaScript, 3rd Edition",
+      "author": "Marijn Haverbeke",
+      "thumbnail": "https://m.media-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
+      "price": 23.99,
+      "rating": 4,
+      "featured": true,
+      "id": 3
+    },
+    {
+      "name": "Catching Fire",
+      "author": "Nico Delort",
+      "thumbnail": "https://d1fd687oe6a92y.cloudfront.net/img/user-media/titles/title/cover/ef50750982534c9da7ac00412f75b13c/25b95795e7d449629bef4e8914e2cd37.jpg.300x0_q85_autocrop.webp",
+      "price": 20,
+      "rating": 4,
+      "featured": true,
+      "id": 4
+    },
+    {
+      "name": "I Am We",
+      "author": "Alexandra Finkeldey",
+      "thumbnail": "https://d1fd687oe6a92y.cloudfront.net/img/user-media/titles/title/cover/fe38a2ca9ea5401e97dc828a3b87629a/d67dd86f3c0343f3b0fa7487a1a0bf9d.jpg.300x0_q85_autocrop.webp",
+      "price": 16,
+      "rating": 4,
+      "featured": false,
+      "id": 5
+    },
+    {
+      "name": "Bad In the Blood",
+      "author": "Matteo L. Cerilli",
+      "thumbnail": "https://d1fd687oe6a92y.cloudfront.net/img/user-media/titles/title/cover/b6a235be017442c48a8e59918be67143/457987ba470943098e424d94152b5a02.jpg.200x0_q85_autocrop.webp",
+      "price": 12,
+      "rating": 3,
+      "featured": true,
+      "id": 6
+    },
+    {
+      "name": "cry out loud",
+      "author": "Tara O'connor",
+      "thumbnail": "https://d1fd687oe6a92y.cloudfront.net/img/user-media/titles/title/cover/c29f33e66df840619d353d7bb6fe1da1/f609e428bb3b43aea7e132e5aa794ec0.jpg.200x0_q85_autocrop.webp",
+      "price": 10,
+      "rating": 3,
+      "featured": true,
+      "id": 7
+    },
+    {
+      "name": "The golden necklace",
+      "author": "Maithili Joshi",
+      "thumbnail": "https://d1fd687oe6a92y.cloudfront.net/img/user-media/titles/title/cover/4561f763d7d6465188cd888ba3395a6f/61904ffd33684998a5563b230b38eb0d.jpg.200x0_q85_autocrop.webp",
+      "price": 16,
+      "rating": 5,
+      "featured": false,
+      "id": 8
+    }
+  ]
+}
