@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap"); */
 @import "tailwindcss";
 
 /* Light Theme (default) */
@@ -212,7 +212,7 @@
 */
 
 @theme {
-  --font-inter: "Inter", sans-serif;
+  /* --font-inter: "Inter", sans-serif; */
 
   --color-background: var(--color-background);
   --color-foreground: var(--color-foreground);
@@ -292,11 +292,11 @@
 }
 
 html {
-  @apply scroll-smooth font-inter;
+  @apply scroll-smooth;
 }
 
 body {
-  @apply bg-background text-foreground font-inter transition-colors duration-300;
+  @apply bg-background text-foreground transition-colors duration-300;
 }
 
 @layer utilities {
@@ -329,6 +329,10 @@ body {
 
 @utility select-box {
   @apply rounded-lg p-2 w-full bg-background border border-secondary-300 focus:border-primary-500 focus:outline-hidden focus:ring-1 focus:ring-primary-500;
+}
+
+@utility conversation-row-grid {
+  @apply h-[calc(100vh-65px)] grid grid-rows-[auto_1fr_auto];
 }
 
 #root {

@@ -1,30 +1,20 @@
-import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
-import { cn } from "@/lib/utils";
+import { Outlet, useLocation } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
-import Navbar from "@/components/Navbar";
+import Navigation from "@/components/Navigation";
 
 const RootLayout = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const location = useLocation();
+  const hideNavbarRoutes = ["/", "/register"];
+  const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
     <>
       <ThemeToggle />
-      <Navbar isScrolled={isScrolled} />
+      {!shouldHideNavbar && <Navigation />}
       <main
-        className={cn(
-          "pt-16 container min-h-screen mx-auto",
-          isScrolled && "pt-17"
-        )}
+        className={`${
+          shouldHideNavbar ? "pt-0" : "pt-16"
+        } container min-h-screen mx-auto`}
       >
         <Outlet />
       </main>

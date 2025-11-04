@@ -1,9 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RootLayout from "@/layouts/RootLayout";
+import ProtectedRoute from "@/layouts/ProtectedRoute"; // ✅ import করো
 
-import Home from "@/pages/Home";
-import Add from "@/pages/Add";
-// import Edit from "@/pages/Edit";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
+import Conversation from "@/pages/Conversation";
+import Inbox from "@/pages/Inbox";
 import NotFound from "@/components/NotFound";
 
 function App() {
@@ -11,10 +13,17 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
-          <Route index element={<Home />} />
-          <Route path="add" element={<Add />} />
-          {/* <Route path="books/edit/:bookId" element={<Edit />} /> */}
+          {/* Public Routes */}
+          <Route index element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/inbox" element={<Conversation />} />
+            <Route path="/inbox/:id" element={<Inbox />} />
+          </Route>
         </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
