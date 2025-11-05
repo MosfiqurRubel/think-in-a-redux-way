@@ -34,7 +34,7 @@ const Input = ({
     ? "border-danger-500 focus:ring-danger-500"
     : success
     ? "border-success-500 focus:ring-success-500"
-    : "border-secondary-200 focus:ring-sky-400";
+    : "border-secondary-200 focus:ring-violet-500";
 
   const icon = error ? (
     <AlertCircle className="text-danger-500 w-5 h-5" />

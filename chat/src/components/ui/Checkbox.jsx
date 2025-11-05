@@ -8,7 +8,7 @@ const Checkbox = ({
   required = false,
   disabled = false,
   color = "primary",
-  size = "md", // ✅ sm | md | lg
+  size = "sm", // ✅ sm | md | lg
   className = "",
 }) => {
   const handleChange = (e) => {
