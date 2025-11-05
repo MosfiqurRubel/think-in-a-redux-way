@@ -5,9 +5,9 @@ import "./index.css";
 import App from "./App.jsx";
 import { store } from "@/app/store.js";
 
-const root = document.getElementById("root");
+const root = createRoot(document.getElementById("root"));
 
-createRoot(root).render(
+root.render(
   <StrictMode>
     <Provider store={store}>
       <App />

@@ -19,4 +19,7 @@ export default defineConfig({
     port: 5173, // Default Vite port
     open: true, // Auto open browser on dev
   },
+  define: {
+    "process.env": {},
+  },
 });
