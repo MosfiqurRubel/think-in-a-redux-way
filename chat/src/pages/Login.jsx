@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "@/features/auth/authAPI";
 import logoImage from "@/assets/images/lws-logo-light.svg";
 import Error from "@/components/ui/Error";
 import Heading from "@/components/ui/Heading";
@@ -6,6 +8,41 @@ import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const empty = {
+    email: "",
+    password: "",
+  };
+  const [formData, setFormData] = useState(empty);
+  const [login, { data, isLoading, error: responseError }] = useLoginMutation();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (responseError?.data) {
+      setError(responseError.data);
+    }
+    if (data?.accessToken && data?.user) {
+      navigate("/inbox");
+    }
+  }, [data, responseError, navigate]);
+
+  const handleChange = (e) => {
+    const payload = {
+      ...formData,
+      [e.target.name]: e.target.value,
+    };
+
+    setFormData(payload);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setError("");
+
+    login(formData);
+  };
   return (
     <div className="grid place-items-center h-screen">
       <div className="min-h-full flex-center py-12 px-4 sm:px-6 lg:px-8">
@@ -25,13 +62,14 @@ const Login = () => {
             />
           </header>
 
-          <form className="mt-8 space-y-6" action="#" method="POST">
-            {/* <input type="hidden" name="remember" value="true" /> */}
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
               <Input
                 type="email"
                 name="email"
                 placeholder="Email address"
+                value={formData.email}
+                onChange={handleChange}
                 required
                 inputClass="rounded-b-none"
               />
@@ -39,6 +77,8 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
                 required
                 inputClass="rounded-t-none"
               />
@@ -54,6 +94,7 @@ const Login = () => {
             </div>
 
             <Button
+              disabled={isLoading}
               id="submit"
               type="submit"
               size="md"
@@ -62,7 +103,7 @@ const Login = () => {
               className="w-full justify-center font-medium"
             />
 
-            <Error message="There was an error" />
+            {error !== "" && <Error children={error} />}
           </form>
         </div>
       </div>
