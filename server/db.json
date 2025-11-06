@@ -1,10 +1,64 @@
 {
   "users": [
     {
-      "email": "mosfiqur.rubel@mail.com",
-      "password": "$2a$10$3Q.KoFVn5HiACzHGSsq.p.WD2WuenQDeo.jac5a8.drGK6tU4qQE2",
+      "email": "mosfiqur.rubel@gmail.com",
+      "password": "$2a$10$A8JMNAYnKdP/cCj1vTTefuK0nk0S7vNkSCvxJOkUU1YJE4tVhTjk6",
       "name": "Mosfiqur",
       "id": 1
+    },
+    {
+      "email": "airin.parvin@gmail.com",
+      "password": "$2a$10$.Lzaql0KhiEd1xWvxYf6HeI.iIEfbCf0iQHG27dPAEIY4GgrhfDYm",
+      "name": "Airin Parvin",
+      "id": 2
+    },
+    {
+      "email": "Romoe@gmail.com",
+      "password": "$2a$10$UWVuCVNNWIpugvwTOB7BvOJzSD/i4xqb2Rp4qO1JDPDcL4D6Fq.8G",
+      "name": "Romeo",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 3
+    },
+    {
+      "email": "ali@gmail.com",
+      "password": "$2a$10$szxjYEgjrYd9QoT5.lo84.Y7ygEmbwWGzOTvnLAfgWyiNkEVWabcy",
+      "name": "Ali",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 4
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$FAeTp7EvjiQ5Eplq/ekYluAqV4UDd7YNpvUZMS2ASldCOBqU9F7bu",
+      "name": "test",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 5
+    },
+    {
+      "email": "abdullah@gmail.com",
+      "password": "$2a$10$EEDEhAqOfRaTL/Zy3VIP7OQqy4ixQo3Re71zBnrjpTxWdFrCij7.y",
+      "name": "Abdullah",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 6
+    },
+    {
+      "email": "test2@gmail.com",
+      "password": "$2a$10$w3JnGlDScu7Umu5qpAEZHubZkDxUz9gDyWVmCDkoL0VUiW39L8iRK",
+      "name": "test2",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 7
+    },
+    {
+      "email": "test3@gmail.com",
+      "password": "$2a$10$VKsZqXuSr3GwY9eArBaWoOwXmVYyvlQF7bVzGjHfR/QeeeD1b/XMS",
+      "name": "test3",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 8
     }
   ],
   "conversations": [

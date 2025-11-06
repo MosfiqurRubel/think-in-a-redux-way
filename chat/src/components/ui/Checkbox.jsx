@@ -19,7 +19,7 @@ const Checkbox = ({
         value: type === "checkbox" ? e.target.checked : e.target.value,
       },
     });
-    console.log("checkbox", e.target.checked);
+    // console.log("checkbox", e.target.checked);
   };
 
   const colorVariants = {

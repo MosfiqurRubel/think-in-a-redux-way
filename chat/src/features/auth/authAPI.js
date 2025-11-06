@@ -1,4 +1,4 @@
-import { apiSlice } from "../api/apiSlice";
+import { apiSlice } from "@/features/api/apiSlice";
 import { userLoggedIn } from "./authSlice";
 
 export const authAPI = apiSlice.injectEndpoints({
@@ -28,7 +28,7 @@ export const authAPI = apiSlice.injectEndpoints({
             })
           );
         } catch (err) {
-          console.log("err ", err);
+          // do nothing -- 01712--98-23-87
         }
       },
     }),
@@ -57,7 +57,7 @@ export const authAPI = apiSlice.injectEndpoints({
             })
           );
         } catch (err) {
-          console.log("err ", err);
+          // do nothing
         }
       },
     }),

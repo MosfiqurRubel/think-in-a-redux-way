@@ -13,5 +13,5 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
-  devTools: process.env.NODE_ENV !== "production", // ✅ Enables Redux DevTools
+  devTools: import.meta.env.NODE_ENV !== "production", // ✅ Enables Redux DevTools
 });
