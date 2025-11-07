@@ -12,10 +12,10 @@
   "conversations": [
     {
       "id": 1,
-      "participants": "sumit@learnwithsumit.com-akash@learnwithsumit.com",
+      "participants": "mosfiqur.rubel@gmail.com-akash@learnwithsumit.com",
       "users": [
         {
-          "email": "sumit@learnwithsumit.com",
+          "email": "mosfiqur.rubel@gmail.com",
           "name": "Sumit Saha",
           "id": 1
         },
@@ -30,10 +30,10 @@
     },
     {
       "id": 2,
-      "participants": "sumit@learnwithsumit.com-saad@learnwithsumit.com",
+      "participants": "mosfiqur.rubel@gmail.com-saad@learnwithsumit.com",
       "users": [
         {
-          "email": "sumit@learnwithsumit.com",
+          "email": "mosfiqur.rubel@gmail.com",
           "name": "Sumit Saha",
           "id": 1
         },
@@ -52,7 +52,7 @@
       "id": 1,
       "conversationId": 1,
       "sender": {
-        "email": "sumit@learnwithsumit.com",
+        "email": "mosfiqur.rubel@gmail.com",
         "name": "Sumit Saha",
         "id": 1
       },
@@ -73,7 +73,7 @@
         "id": 2
       },
       "receiver": {
-        "email": "sumit@learnwithsumit.com",
+        "email": "mosfiqur.rubel@gmail.com",
         "name": "Sumit Saha",
         "id": 1
       },
