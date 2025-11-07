@@ -7,9 +7,14 @@ import Register from "@/pages/Register";
 import Conversation from "@/pages/Conversation";
 import Inbox from "@/pages/Inbox";
 import NotFound from "@/components/NotFound";
+import useAuthCheck from "@/hooks/useAuthCheck";
 
 function App() {
-  return (
+  const authChecked = useAuthCheck();
+
+  return !authChecked ? (
+    <div>Checking authentication...</div>
+  ) : (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
