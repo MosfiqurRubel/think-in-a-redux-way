@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RootLayout from "@/layouts/RootLayout";
-import ProtectedRoute from "@/layouts/ProtectedRoute"; // ✅ import করো
+import PublicRoute from "@/layouts/PublicRoute";
+import PrivateRoute from "@/layouts/PrivateRoute"; // ✅ import করো
 
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
@@ -18,12 +19,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
-          {/* Public Routes */}
-          <Route index element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {/* 🔓 Public Routes */}
+          <Route element={<PublicRoute />}>
+            <Route index element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
 
-          {/* Protected Routes */}
-          <Route element={<ProtectedRoute />}>
+          {/* 🔐 Private Routes */}
+          <Route element={<PrivateRoute />}>
             <Route path="/inbox" element={<Conversation />} />
             <Route path="/inbox/:id" element={<Inbox />} />
           </Route>

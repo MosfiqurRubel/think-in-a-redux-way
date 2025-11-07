@@ -64,89 +64,88 @@ const Register = () => {
 
   return (
     <div className="grid place-items-center h-screen">
-      <div className="min-h-full flex-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <header>
-            <Link to="/">
-              <img
-                className="mx-auto h-12 w-auto"
-                src={logoImage}
-                alt="Learn with sumit"
-              />
-            </Link>
-            <Heading
-              level="2"
-              className="text-foreground text-center mt-6"
-              text="Create your account"
+      <div className="max-w-sm w-full space-y-8">
+        <header>
+          <Link to="/">
+            <img
+              className="mx-auto h-12 w-auto"
+              src={logoImage}
+              alt="Learn with sumit"
             />
-          </header>
+          </Link>
+          <Heading
+            level="2"
+            align="center"
+            className="text-foreground mt-6"
+            text="Create your account"
+          />
+        </header>
 
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="rounded-md shadow-sm -space-y-px">
-              <Input
-                name="name"
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                inputClass="rounded-b-none"
-              />
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                inputClass="rounded-none"
-              />
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                inputClass="rounded-none"
-              />
-              <Input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                required
-                inputClass="rounded-t-none"
-              />
-            </div>
-
-            <div className="flex items-center">
-              <Checkbox
-                name="agreed"
-                id="agreed"
-                checked={formData.agreed}
-                onChange={handleChange}
-                required={true}
-              />
-              <Label
-                htmlFor="agreed"
-                text="Agreed with the terms and condition"
-                className="ml-2 text-sm normal-case"
-              />
-            </div>
-
-            <Button
-              disabled={isLoading}
-              id="submit"
-              type="submit"
-              size="md"
-              variant="primary"
-              text="Sign Up"
-              className="w-full justify-center font-medium"
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="rounded-md shadow-sm -space-y-px">
+            <Input
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              inputClass="rounded-b-none"
             />
-          </form>
-          {error !== "" && <Error children={error} />}
-        </div>
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              inputClass="rounded-none"
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              inputClass="rounded-none"
+            />
+            <Input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+              inputClass="rounded-t-none"
+            />
+          </div>
+
+          <div className="flex items-center">
+            <Checkbox
+              name="agreed"
+              id="agreed"
+              checked={formData.agreed}
+              onChange={handleChange}
+              required={true}
+            />
+            <Label
+              htmlFor="agreed"
+              text="Agreed with the terms and condition"
+              className="ml-2 text-sm normal-case"
+            />
+          </div>
+
+          <Button
+            disabled={isLoading}
+            id="submit"
+            type="submit"
+            size="md"
+            variant="primary"
+            text="Sign Up"
+            className="w-full justify-center font-medium"
+          />
+        </form>
+        {error !== "" && <Error children={error} />}
       </div>
     </div>
   );
