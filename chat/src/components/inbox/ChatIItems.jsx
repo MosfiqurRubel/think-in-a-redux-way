@@ -51,7 +51,7 @@ const ChatIItems = () => {
         <li key={id}>
           <Link to={`/inbox/${id}`}>
             <ChatItem
-              avatar={gravatarUrl(partnerEmail, { size: 80 })}
+              avatar={gravatarUrl(partnerEmail, { size: 40 })}
               name={name}
               lastMessage={message}
               lastTime={moment(timestamp).fromNow()}

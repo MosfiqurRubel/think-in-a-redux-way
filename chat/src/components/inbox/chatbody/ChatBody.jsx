@@ -18,14 +18,11 @@ const ChatBody = () => {
   } else if (!isLoading && isError) {
     content = <Error children={error?.data} />;
   } else if (!isLoading && !isError && messages?.length === 0) {
-    content = <Loading loadingText="No messages found!" />;
+    content = <Loading loadingText="No messages found!" className="p-4" />;
   } else if (!isLoading && !isError && messages?.length > 0) {
     content = (
       <>
-        <ChatHead
-          avatar="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383__340.jpg"
-          name="Akash Ahmed"
-        />
+        <ChatHead message={messages[0]} />
         <Messages messages={messages} />
         <Options />
       </>

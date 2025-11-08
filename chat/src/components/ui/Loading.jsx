@@ -1,5 +1,5 @@
-const Loading = ({ loadingText = "Loading ..." }) => {
-  return <div className="col-span-12">{loadingText}</div>;
+const Loading = ({ loadingText = "Loading ...", className }) => {
+  return <div className={`col-span-12 ${className}`}>{loadingText}</div>;
 };
 
 export default Loading;
