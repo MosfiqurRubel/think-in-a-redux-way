@@ -10,6 +10,7 @@ const Textarea = ({
   disabled = false,
   rows = 4,
   className = "",
+  textareaClass = "",
   onChange,
   error = "",
   success = "",
@@ -28,15 +29,15 @@ const Textarea = ({
 
   // ✅ Dynamic color styles
   const borderClass = error
-    ? "border-red-500 focus:ring-red-500"
+    ? "border-danger-500 focus:ring-danger-500"
     : success
-    ? "border-emerald-500 focus:ring-emerald-500"
-    : "border-gray-300 focus:ring-sky-400";
+    ? "border-success-500 focus:ring-success-500"
+    : "border-secondary-200 focus:ring-violet-400";
 
   const icon = error ? (
-    <AlertCircle className="text-red-500 w-5 h-5" />
+    <AlertCircle className="text-danger-500 w-5 h-5" />
   ) : success ? (
-    <CheckCircle className="text-emerald-500 w-5 h-5" />
+    <CheckCircle className="text-success-500 w-5 h-5" />
   ) : null;
 
   return (
@@ -47,13 +48,13 @@ const Textarea = ({
           htmlFor={id || name}
           className={`text-sm font-medium ${
             error
-              ? "text-red-600"
+              ? "text-danger-600"
               : success
-              ? "text-emerald-600"
-              : "text-gray-700"
+              ? "text-success-600"
+              : "border-secondary-700"
           }`}
         >
-          {label} {required && <span className="text-red-500">*</span>}
+          {label} {required && <span className="text-danger-500">*</span>}
         </label>
       )}
 
@@ -68,16 +69,16 @@ const Textarea = ({
           disabled={disabled}
           value={value}
           onChange={handleChange}
-          className={`w-full resize-none rounded-md border ${borderClass} py-2.5 px-3 pr-9 outline-none transition-all duration-200 placeholder:text-gray-400 disabled:opacity-60 disabled:cursor-not-allowed`}
+          className={`resize-none input-field ${borderClass} ${textareaClass}`}
         />
         {/* ✅ Validation Icon */}
         {icon && <span className="absolute right-3 top-3">{icon}</span>}
       </div>
 
       {/* ✅ Validation Messages */}
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="text-danger-500 text-sm">{error}</p>}
       {!error && success && (
-        <p className="text-emerald-500 text-sm">{success}</p>
+        <p className="text-success-500 text-sm">{success}</p>
       )}
     </div>
   );
