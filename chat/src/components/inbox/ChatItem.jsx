@@ -8,10 +8,14 @@ const ChatItem = ({ avatar, name, lastMessage, lastTime }) => {
       />
       <div className="w-full pb-2 hidden md:block">
         <div className="flex justify-between">
-          <span className="block ml-2 font-semibold text-gray-600">{name}</span>
-          <span className="block ml-2 text-sm text-gray-600">{lastTime}</span>
+          <span className="block ml-2 font-semibold text-foreground">
+            {name}
+          </span>
+          <span className="block ml-2 text-sm text-foreground">{lastTime}</span>
         </div>
-        <span className="block ml-2 text-sm text-gray-600">{lastMessage}</span>
+        <span className="block ml-2 text-sm text-foreground">
+          {lastMessage}
+        </span>
       </div>
     </div>
   );
