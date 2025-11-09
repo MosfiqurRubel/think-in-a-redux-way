@@ -25,16 +25,21 @@
         {
           "email": "mosfiqur.rubel@gmail.com",
           "name": "Mosfiqur Rahman",
+          "confirmPassword": "123456",
+          "agreed": true,
           "id": 1
         },
         {
           "email": "airin.parvin@gmail.com",
-          "name": "Airin Parvin",
+          "password": "$2a$10$4tvzOaFc7.DPWY.kshY9n.xlDngLctiEHJryxTlT/7ashRoCPQlua",
+          "name": "Airin Parin",
+          "confirmPassword": "123456",
+          "agreed": true,
           "id": 2
         }
       ],
-      "message": "How are you?",
-      "timestamp": 1661976143678
+      "message": "r you there?",
+      "timestamp": 1762702117787
     },
     {
       "id": 2,
@@ -46,8 +51,8 @@
           "id": 1
         },
         {
-          "email": "airin.parvin@gmail.com",
-          "name": "Saad Hasan",
+          "email": "saad@learnwithsumit.com",
+          "name": "Saad",
           "id": 3
         }
       ],
