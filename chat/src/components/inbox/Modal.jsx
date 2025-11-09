@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetUserQuery } from "@/features/users/usersAPI";
+import { conversationsAPI } from "@/features/conversations/conversationsAPI";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
@@ -8,13 +10,37 @@ import Error from "@/components/ui/Error";
 import isValidEmail from "@/utils/isValidEmail";
 
 const Modal = ({ open, control }) => {
+  const dispatch = useDispatch();
   const [to, setTo] = useState("");
   const [message, setMessage] = useState("");
   const [userCheck, setUserCheck] = useState(false);
+  const { user: loggedInUser } = useSelector((state) => state.auth) || {};
+  const { email: myEmail } = loggedInUser || {};
+  const [responseError, setResponseError] = useState("");
+  const [conversation, setConversation] = useState(undefined);
 
   const { data: participant } = useGetUserQuery(to, {
     skip: !userCheck,
   });
+
+  useEffect(() => {
+    if (participant?.length > 0 && participant[0].email !== myEmail) {
+      // check conversation existance
+      dispatch(
+        conversationsAPI.endpoints.getConversation.initiate({
+          userEmail: myEmail,
+          participantEmail: to,
+        })
+      )
+        .unwrap()
+        .then((data) => {
+          setConversation(data);
+        })
+        .catch((err) => {
+          setResponseError("There was a problem!");
+        });
+    }
+  }, [participant, dispatch, myEmail, to]);
 
   const debounce = (func, delay) => {
     let timer;
@@ -40,6 +66,7 @@ const Modal = ({ open, control }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted");
   };
 
   return (
@@ -78,6 +105,10 @@ const Modal = ({ open, control }) => {
             </div>
 
             <Button
+              disabled={
+                conversation === undefined ||
+                (participant?.length > 0 && participant[0].email === myEmail)
+              }
               type="submit"
               size="md"
               variant="primary"
@@ -88,6 +119,10 @@ const Modal = ({ open, control }) => {
             {participant?.length === 0 && (
               <Error children="This user doesn't exit!" />
             )}
+            {participant?.length > 0 && participant[0].email === myEmail && (
+              <Error children="You can't send message to yourself!" />
+            )}
+            {responseError && <Error children={responseError} />}
           </form>
         </div>
       </>
