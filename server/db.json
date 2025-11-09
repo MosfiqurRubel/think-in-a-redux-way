@@ -7,6 +7,14 @@
       "confirmPassword": "123456",
       "agreed": true,
       "id": 1
+    },
+    {
+      "email": "airin.parvin@gmail.com",
+      "password": "$2a$10$4tvzOaFc7.DPWY.kshY9n.xlDngLctiEHJryxTlT/7ashRoCPQlua",
+      "name": "Airin Parin",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 2
     }
   ],
   "conversations": [
@@ -16,12 +24,12 @@
       "users": [
         {
           "email": "mosfiqur.rubel@gmail.com",
-          "name": "Sumit Saha",
+          "name": "Mosfiqur Rahman",
           "id": 1
         },
         {
           "email": "airin.parvin@gmail.com",
-          "name": "Akash Ahmed",
+          "name": "Airin Parvin",
           "id": 2
         }
       ],
@@ -34,7 +42,7 @@
       "users": [
         {
           "email": "mosfiqur.rubel@gmail.com",
-          "name": "Sumit Saha",
+          "name": "Mosfiqur Rahman",
           "id": 1
         },
         {
@@ -53,12 +61,12 @@
       "conversationId": 1,
       "sender": {
         "email": "mosfiqur.rubel@gmail.com",
-        "name": "Sumit Saha",
+        "name": "Mosfiqur Rahman",
         "id": 1
       },
       "receiver": {
         "email": "airin.parvin@gmail.com",
-        "name": "Akash Ahmed",
+        "name": "Airin Parvin",
         "id": 2
       },
       "message": "Hello",
@@ -69,12 +77,12 @@
       "conversationId": 1,
       "sender": {
         "email": "airin.parvin@gmail.com",
-        "name": "Akash Ahmed",
+        "name": "Airin Parvin",
         "id": 2
       },
       "receiver": {
         "email": "mosfiqur.rubel@gmail.com",
-        "name": "Sumit Saha",
+        "name": "Mosfiqur Rahman",
         "id": 1
       },
       "message": "How are you?",

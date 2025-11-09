@@ -1,13 +1,20 @@
 import { useState } from "react";
+import { useGetUserQuery } from "@/features/users/usersAPI";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import Button from "@/components/ui/Button";
+import Error from "@/components/ui/Error";
 import isValidEmail from "@/utils/isValidEmail";
 
 const Modal = ({ open, control }) => {
   const [to, setTo] = useState("");
   const [message, setMessage] = useState("");
+  const [userCheck, setUserCheck] = useState(false);
+
+  const { data: participant } = useGetUserQuery(to, {
+    skip: !userCheck,
+  });
 
   const debounce = (func, delay) => {
     let timer;
@@ -23,6 +30,7 @@ const Modal = ({ open, control }) => {
   const searchQuery = (value) => {
     if (isValidEmail(value)) {
       // check user API
+      setUserCheck(true);
       console.log("valid");
       setTo(value);
     }
@@ -77,7 +85,9 @@ const Modal = ({ open, control }) => {
               className="w-full justify-center font-medium"
             />
 
-            {/* <Error message="There was an error" /> */}
+            {participant?.length === 0 && (
+              <Error children="This user doesn't exit!" />
+            )}
           </form>
         </div>
       </>
