@@ -15,83 +15,148 @@
       "confirmPassword": "123456",
       "agreed": true,
       "id": 2
+    },
+    {
+      "email": "sumit@learnwithsumit.com",
+      "password": "$2a$10$hVVTwIaOcTLKKK.HHaW5POxg4S7k1qjrzEWQnBOwG1HMOiufPOBuO",
+      "name": "Sumit Saha",
+      "confirmPassword": "123456",
+      "agreed": true,
+      "id": 3
     }
   ],
   "conversations": [
     {
-      "id": 1,
-      "participants": "mosfiqur.rubel@gmail.com-airin.parvin@gmail.com",
+      "participants": "airin.parvin@gmail.com-mosfiqur.rubel@gmail.com",
       "users": [
         {
-          "email": "mosfiqur.rubel@gmail.com",
-          "name": "Mosfiqur Rahman",
-          "confirmPassword": "123456",
-          "agreed": true,
-          "id": 1
-        },
-        {
           "email": "airin.parvin@gmail.com",
-          "password": "$2a$10$4tvzOaFc7.DPWY.kshY9n.xlDngLctiEHJryxTlT/7ashRoCPQlua",
           "name": "Airin Parin",
           "confirmPassword": "123456",
           "agreed": true,
           "id": 2
+        },
+        {
+          "email": "mosfiqur.rubel@gmail.com",
+          "password": "$2a$10$JkDmwkPGiDL7xS2/Oi06q.EjauvIvEbOHpgW8q4J7UxPpYvJf0lGy",
+          "name": "Mosfiqur Rahman",
+          "confirmPassword": "123456",
+          "agreed": true,
+          "id": 1
         }
       ],
-      "message": "r you there?",
-      "timestamp": 1762702117787
+      "message": "Hello, r u there?",
+      "timestamp": 1762763664120,
+      "id": 1
     },
     {
-      "id": 2,
-      "participants": "mosfiqur.rubel@gmail.com-saad@learnwithsumit.com",
+      "participants": "mosfiqur.rubel@gmail.com-sumit@learnwithsumit.com",
       "users": [
         {
           "email": "mosfiqur.rubel@gmail.com",
           "name": "Mosfiqur Rahman",
+          "confirmPassword": "123456",
+          "agreed": true,
           "id": 1
         },
         {
-          "email": "saad@learnwithsumit.com",
-          "name": "Saad",
+          "email": "sumit@learnwithsumit.com",
+          "password": "$2a$10$hVVTwIaOcTLKKK.HHaW5POxg4S7k1qjrzEWQnBOwG1HMOiufPOBuO",
+          "name": "Sumit Saha",
+          "confirmPassword": "123456",
+          "agreed": true,
           "id": 3
         }
       ],
-      "message": "How are you?",
-      "timestamp": 1661976143678
+      "message": "Hi vai, I'm fine thanks and how are you?",
+      "timestamp": 1762780153553,
+      "id": 2
     }
   ],
   "messages": [
     {
-      "id": 1,
       "conversationId": 1,
       "sender": {
-        "email": "mosfiqur.rubel@gmail.com",
-        "name": "Mosfiqur Rahman",
-        "id": 1
-      },
-      "receiver": {
         "email": "airin.parvin@gmail.com",
-        "name": "Airin Parvin",
+        "name": "Airin Parin",
+        "confirmPassword": "123456",
+        "agreed": true,
         "id": 2
       },
-      "message": "Hello",
-      "timestamp": 1661976143557
+      "receiver": {
+        "email": "mosfiqur.rubel@gmail.com",
+        "password": "$2a$10$JkDmwkPGiDL7xS2/Oi06q.EjauvIvEbOHpgW8q4J7UxPpYvJf0lGy",
+        "name": "Mosfiqur Rahman",
+        "confirmPassword": "123456",
+        "agreed": true,
+        "id": 1
+      },
+      "message": "test",
+      "timestamp": 1762763605533,
+      "id": 1
     },
     {
-      "id": 2,
       "conversationId": 1,
       "sender": {
         "email": "airin.parvin@gmail.com",
-        "name": "Airin Parvin",
+        "name": "Airin Parin",
+        "confirmPassword": "123456",
+        "agreed": true,
         "id": 2
       },
       "receiver": {
         "email": "mosfiqur.rubel@gmail.com",
+        "password": "$2a$10$JkDmwkPGiDL7xS2/Oi06q.EjauvIvEbOHpgW8q4J7UxPpYvJf0lGy",
         "name": "Mosfiqur Rahman",
+        "confirmPassword": "123456",
+        "agreed": true,
         "id": 1
       },
-      "message": "How are you?",
-      "timestamp": 1661976143678
+      "message": "Hello, r u there?",
+      "timestamp": 1762763664120,
+      "id": 2
+    },
+    {
+      "conversationId": 2,
+      "sender": {
+        "email": "sumit@learnwithsumit.com",
+        "name": "Sumit Saha",
+        "confirmPassword": "123456",
+        "agreed": true,
+        "id": 3
+      },
+      "receiver": {
+        "email": "mosfiqur.rubel@gmail.com",
+        "password": "$2a$10$JkDmwkPGiDL7xS2/Oi06q.EjauvIvEbOHpgW8q4J7UxPpYvJf0lGy",
+        "name": "Mosfiqur Rahman",
+        "confirmPassword": "123456",
+        "agreed": true,
+        "id": 1
+      },
+      "message": "Hello vai, How are you?",
+      "timestamp": 1762780063244,
+      "id": 3
+    },
+    {
+      "conversationId": 2,
+      "sender": {
+        "email": "mosfiqur.rubel@gmail.com",
+        "name": "Mosfiqur Rahman",
+        "confirmPassword": "123456",
+        "agreed": true,
+        "id": 1
+      },
+      "receiver": {
+        "email": "sumit@learnwithsumit.com",
+        "password": "$2a$10$hVVTwIaOcTLKKK.HHaW5POxg4S7k1qjrzEWQnBOwG1HMOiufPOBuO",
+        "name": "Sumit Saha",
+        "confirmPassword": "123456",
+        "agreed": true,
+        "id": 3
+      },
+      "message": "Hi vai, I'm fine thanks and how are you?",
+      "timestamp": 1762780153553,
+      "id": 4
     }
   ]
 }

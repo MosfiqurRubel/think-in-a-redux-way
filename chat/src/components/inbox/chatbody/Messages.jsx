@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Message from "./Message";
 
 const Messages = ({ messages }) => {
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth) || {};
   const { email } = user || {};
 
   return (

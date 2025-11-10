@@ -1,7 +1,9 @@
 import { apiSlice } from "@/features/api/apiSlice";
+import { messagesAPI } from "@/features/messages/messagesAPI";
 
 export const conversationsAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    // import.meta.env.VITE_API_MESSAGES_PER_PAGE
     getConversations: builder.query({
       query: (email) =>
         `/conversations?participants_like=${email}&_sort=timestamp&_order=desc&_page=1&_limit=${
@@ -13,18 +15,56 @@ export const conversationsAPI = apiSlice.injectEndpoints({
         `/conversations?participants_like=${userEmail}-${participantEmail}&&participants_like=${participantEmail}-${userEmail}`,
     }),
     addConversation: builder.mutation({
-      query: (data) => ({
+      query: ({ sender, data }) => ({
         url: "/conversations",
         method: "POST",
         body: data,
       }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        const conversation = await queryFulfilled;
+        if (conversation?.data?.id) {
+          // silent entry to message table
+          const users = arg.data.users;
+          const senderUser = users.find((user) => user.email === arg.sender);
+          const receiverUser = users.find((user) => user.email !== arg.sender);
+
+          dispatch(
+            messagesAPI.endpoints.addMessage.initiate({
+              conversationId: conversation?.data?.id,
+              sender: senderUser,
+              receiver: receiverUser,
+              message: arg.data.message,
+              timestamp: arg.data.timestamp,
+            })
+          );
+        }
+      },
     }),
     editConversation: builder.mutation({
-      query: ({ id, data }) => ({
+      query: ({ id, data, sender }) => ({
         url: `/conversations/${id}`,
         method: "PATCH",
         body: data,
       }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        const conversation = await queryFulfilled;
+        if (conversation?.data?.id) {
+          // silent entry to message table
+          const users = arg.data.users;
+          const senderUser = users.find((user) => user.email === arg.sender);
+          const receiverUser = users.find((user) => user.email !== arg.sender);
+
+          dispatch(
+            messagesAPI.endpoints.addMessage.initiate({
+              conversationId: conversation?.data?.id,
+              sender: senderUser,
+              receiver: receiverUser,
+              message: arg.data.message,
+              timestamp: arg.data.timestamp,
+            })
+          );
+        }
+      },
     }),
   }),
 });
