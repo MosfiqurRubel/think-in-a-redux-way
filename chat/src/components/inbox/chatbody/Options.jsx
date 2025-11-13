@@ -17,7 +17,7 @@ const Options = ({ info }) => {
   }, [isSuccess]);
 
   const { user: loggedInUser } = useSelector((state) => state.auth);
-  console.log(info);
+
   const participantUser =
     info.receiver.email !== loggedInUser.email ? info.receiver : info.sender;
 
