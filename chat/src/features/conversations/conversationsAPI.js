@@ -47,22 +47,41 @@ export const conversationsAPI = apiSlice.injectEndpoints({
         body: data,
       }),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        const conversation = await queryFulfilled;
-        if (conversation?.data?.id) {
-          // silent entry to message table
-          const users = arg.data.users;
-          const senderUser = users.find((user) => user.email === arg.sender);
-          const receiverUser = users.find((user) => user.email !== arg.sender);
+        // optimistic cache update start
+        const pathResult1 = dispatch(
+          apiSlice.util.updateQueryData(
+            "getConversations",
+            arg.sender,
+            (draft) => {
+              const draftConversation = draft.find((c) => c.id == arg.id);
+              draftConversation.message = arg.data.message;
+              draftConversation.timestamp = arg.data.timestamp;
+            }
+          )
+        );
+        // optimistic cache update end
+        try {
+          const conversation = await queryFulfilled;
+          if (conversation?.data?.id) {
+            // silent entry to message table
+            const users = arg.data.users;
+            const senderUser = users.find((user) => user.email === arg.sender);
+            const receiverUser = users.find(
+              (user) => user.email !== arg.sender
+            );
 
-          dispatch(
-            messagesAPI.endpoints.addMessage.initiate({
-              conversationId: conversation?.data?.id,
-              sender: senderUser,
-              receiver: receiverUser,
-              message: arg.data.message,
-              timestamp: arg.data.timestamp,
-            })
-          );
+            dispatch(
+              messagesAPI.endpoints.addMessage.initiate({
+                conversationId: conversation?.data?.id,
+                sender: senderUser,
+                receiver: receiverUser,
+                message: arg.data.message,
+                timestamp: arg.data.timestamp,
+              })
+            );
+          }
+        } catch (err) {
+          pathResult1.undo();
         }
       },
     }),
