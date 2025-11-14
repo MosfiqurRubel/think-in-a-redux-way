@@ -1,0 +1,16 @@
+import Sidebar from "@/components/inbox/Sidebar";
+import ChatBody from "@/components/inbox/chatbody/ChatBody";
+
+const Inbox = () => {
+  return (
+    <div className="max-w-7xl mx-auto -mt-1">
+      <div className="min-w-full border border-secondary-200 rounded-none flex lg:grid lg:grid-cols-3">
+        {/* <Sidebar />
+        <ChatBody /> */}
+        fdsf
+      </div>
+    </div>
+  );
+};
+
+export default Inbox;

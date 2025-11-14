@@ -1,0 +1,25 @@
+import Input from "@/components/ui/Input";
+import SvgIcon from "@/components/ui/SvgIcon";
+
+const SearchBar = ({ search, setSearch }) => {
+  const handleSearch = (e) => setSearch(e.target.value);
+
+  return (
+    <div className="group relative rounded-md">
+      <Input
+        name="search"
+        type="search"
+        value={search}
+        onChange={handleSearch}
+        placeholder="Search"
+        inputClass="pe-10 max-w-56 rounded-md"
+      />
+      <SvgIcon
+        name="search"
+        className="absolute right-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-primary-500"
+      />
+    </div>
+  );
+};
+
+export default SearchBar;
